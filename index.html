@@ -1,89 +1,896 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>סדר ותהליכים לעסקים קטנים | קישור מערכות ודשבורדים מותאמים אישית</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;600;700&display=swap');
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/12.7.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/12.7.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/12.7.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
+    body {
+      font-family: 'Noto Sans Hebrew', sans-serif;
+      direction: rtl;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #ffffff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    h1, h2, h3 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #2c5aa0 0%, #1e3a6b 100%);
+      color: white;
+      text-align: center;
+      padding: 100px 0;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-image {
+      max-width: 600px;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      display: block;
+      transition: transform 0.2s;
+    }
+
+    .hero-image:hover {
+      transform: scale(1.02);
+    }
+
+    /* Image Modal */
+    .image-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .image-modal-content {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .image-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.5);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      z-index: 10000;
+    }
+
+    .image-modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: rotate(90deg);
+    }
+
+    .hero h1 {
+      margin-bottom: 1.5rem;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      opacity: 0.95;
+      font-weight: 300;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 16px 40px;
+      background: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-bottom: 2rem;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      background: #20903a;
+    }
+
+    /* For Who Section */
+    .for-who {
+      background: #f8f8f8;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #e0e0e0;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      margin-bottom: 0.8rem;
+    }
+
+    .card p {
+      color: #666;
+    }
+
+    /* Process Section */
+    .process {
+      background: white;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 3rem;
+    }
+
+    .step {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background: #2c5aa0;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 auto 1.5rem;
+    }
+
+    .step h3 {
+      margin-bottom: 0.8rem;
+    }
+
+    .step p {
+      color: #666;
+    }
+
+    /* Pricing Section */
+    .pricing {
+      background: #f8f8f8;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 2rem;
+    }
+
+    .pricing-card {
+      background: white;
+      padding: 35px;
+      border-radius: 12px;
+      text-align: center;
+      border: 2px solid #e0e0e0;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .pricing-card.featured {
+      border-color: #2c5aa0;
+      transform: scale(1.05);
+    }
+
+    .pricing-card.featured:hover {
+      transform: scale(1.08) translateY(-5px);
+    }
+
+    .badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: #2c5aa0;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .pricing-card h3 {
+      margin-bottom: 1rem;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 1.5rem 0;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      text-align: right;
+      margin-top: 1.5rem;
+    }
+
+    .pricing-card li {
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .pricing-card li:last-child {
+      border-bottom: none;
+    }
+
+    .pricing-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    /* Mistakes Section */
+    .mistakes {
+      background: white;
+    }
+
+    .mistake-list {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .mistake-item {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+      padding: 25px;
+      background: #f8f8f8;
+      border-radius: 12px;
+      align-items: flex-start;
+    }
+
+    .mistake-icon {
+      font-size: 2.5rem;
+      flex-shrink: 0;
+    }
+
+    .mistake-content h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .mistake-content p {
+      color: #666;
+    }
+
+    /* Solution Section */
+    .solution {
+      background: #f8f8f8;
+    }
+
+    .solution-points {
+      max-width: 800px;
+      margin: 2rem auto 0;
+    }
+
+    .point {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+    }
+
+    .checkmark {
+      color: #28a745;
+      font-size: 1.5rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .point p {
+      font-size: 1.1rem;
+    }
+
+    /* Contact Section */
+    .contact {
+      background: linear-gradient(135deg, #2c5aa0 0%, #1e3a6b 100%);
+      color: white;
+      text-align: center;
+      padding: 80px 0;
+    }
+
+    .contact h2 {
+      color: white;
+    }
+
+    .contact-text {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    .contact-methods {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 30px;
+      background: white;
+      color: #1a1a1a;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .contact-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .contact-button.whatsapp {
+      background: #25D366;
+      color: white;
+    }
+
+    .contact-button.whatsapp:hover {
+      background: #20ba5a;
+    }
+
+    .contact-button.calendar {
+      background: #ff6b35;
+      color: white;
+    }
+
+    .contact-button.calendar:hover {
+      background: #e55a2b;
+    }
+
+    .contact-button.phone {
+      background: #007bff;
+      color: white;
+    }
+
+    .contact-button.phone:hover {
+      background: #0056b3;
+    }
+
+    /* Contact Form */
+    .contact-form-wrapper {
+      max-width: 600px;
+      margin: 50px auto 0;
+      text-align: center;
+    }
+
+    .contact-form-wrapper h3 {
+      color: white;
+      margin-bottom: 2rem;
+      font-size: 1.3rem;
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      font-family: 'Noto Sans Hebrew', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: white;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 16px;
+      background: white;
+      color: #2c5aa0;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Noto Sans Hebrew', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Audio Section */
+    .audio-section {
+      background: white;
+      padding: 60px 0;
+    }
+
+    .audio-wrapper {
+      max-width: 800px;
+      margin: 2rem auto 0;
+    }
+
+    /* Footer */
+    footer {
+      background: #1e3a6b;
+      color: white;
+      text-align: center;
+      padding: 30px 0;
+    }
+
+    footer p {
+      opacity: 0.8;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
       }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+      
+      h2 {
+        font-size: 1.6rem;
+      }
+      
+      .hero {
+        padding: 60px 0;
+        min-height: 400px;
+      }
+      
+      .tagline {
+        font-size: 1rem;
+      }
+      
+      section {
+        padding: 40px 0;
+      }
+      
+      .cards, .timeline, .pricing-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .pricing-card.featured {
+        transform: scale(1);
+      }
+      
+      .pricing-card.featured:hover {
+        transform: translateY(-5px);
+      }
+      
+      .contact-methods {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .contact-button {
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .contact-form {
+        padding: 20px;
+      }
+      
+      .contact-form-wrapper h3 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>סדר ותהליכים ברורים לעסק שלך</h1>
+      <p class="tagline">חבר בין המערכות שלך, בנה תהליכים ברורים, וקבל דשבורד שמראה את התמונה המלאה - ללא מנויים חודשיים יקרים</p>
+      <a href="#contact" class="cta-button">בואו נדבר</a>
+      <div style="margin-top: 3rem;">
+        <img src="dashboard.png" alt="Dashboard" class="hero-image">
+      </div>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+  </section>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+  <!-- Who is this for -->
+  <section class="for-who">
+    <div class="container">
+      <h2>למי זה מתאים?</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="icon">👤</div>
+          <h3>עצמאים ויועצים</h3>
+          <p>תהליך עבודה ברור מליד ועד סגירה, דשבורד שמראה מה קורה</p>
+        </div>
+        <div class="card">
+          <div class="icon">🏪</div>
+          <h3>עסקים קטנים</h3>
+          <p>1-20 עובדים שרוצים חיבור בין המערכות ותהליכים מוגדרים</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔧</div>
+          <h3>נותני שירותים</h3>
+          <p>קליניקות, מוסכים, אנשי מקצוע - דשבורד אחד לכל העסק</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+  <!-- Process -->
+  <section class="process">
+    <div class="container">
+      <h2>איך זה עובד?</h2>
+      <div class="timeline">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>מיפוי תהליכים</h3>
+          <p>הבנת התהליכים הקיימים, איפה המידע, מה חסר</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>חיבור מערכות</h3>
+          <p>קישור בין כלי העבודה שלך + בניית דשבורד מרכזי</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>הגדרת תהליכים</h3>
+          <p>תהליכים ברורים לצוות, אוטומציות, מדריכי עבודה</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>ליווי והטמעה</h3>
+          <p>הכשרת הצוות, חודש ליווי, תמיכה שוטפת</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing">
+    <div class="container">
+      <h2>תמחור שקוף</h2>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>חבילה בסיסית</h3>
+          <div class="price">החל מ-₪1,500</div>
+          <ul>
+            <li>מיפוי תהליכים</li>
+            <li>הגדרת תהליכים פנימיים</li>
+            <li>דשבורד בסיסי</li>
+            <li>הדרכה + מדריך</li>
+          </ul>
+        </div>
+        <div class="pricing-card featured">
+          <div class="badge">מומלץ</div>
+          <h3>חבילה מלאה</h3>
+          <div class="price">החל מ-₪2,200</div>
+          <ul>
+            <li>מיפוי מעמיק</li>
+            <li>חיבור כל המערכות</li>
+            <li>דשבורד מותאם אישית</li>
+            <li>אוטומציות מתקדמות</li>
+            <li>חודש ליווי + 10 שעות</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <h3>ליווי שוטף</h3>
+          <div class="price">₪250/שעה</div>
+          <ul>
+            <li>שיפורים בתהליכים</li>
+            <li>עדכון דשבורד</li>
+            <li>הוספת אוטומציות</li>
+            <li>חבילות שעות במחיר מיוחד</li>
+          </ul>
+        </div>
+      </div>
+      <p class="pricing-note">💡 תשלום חד-פעמי על ההקמה + עלות חודשית מינימלית לתפעול המערכות</p>
+    </div>
+  </section>
+
+  <!-- Common Mistakes -->
+  <section class="mistakes">
+    <div class="container">
+      <h2>הטעויות הנפוצות בניהול עסק</h2>
+      <div class="mistake-list">
+        <div class="mistake-item">
+          <div class="mistake-icon">📊</div>
+          <div class="mistake-content">
+            <h3>אקסל שהפך לסיוט</h3>
+            <p>טבלאות ענקיות, גרסאות מרובות, מידע מפוזר. אף אחד לא באמת יודע מה הסטטוס של כל לקוח.</p>
+          </div>
+        </div>
+        <div class="mistake-item">
+          <div class="mistake-icon">💬</div>
+          <div class="mistake-content">
+            <h3>פניות שנופלות בין הכיסאות</h3>
+            <p>לקוח שלח הודעה בווטסאפ, מישהו ענה במייל, ואף אחד לא זכר לעקוב. ההזדמנות הלכה לאיבוד.</p>
+          </div>
+        </div>
+        <div class="mistake-item">
+          <div class="mistake-icon">🔄</div>
+          <div class="mistake-content">
+            <h3>אין תהליך עבודה מוגדר</h3>
+            <p>כל אחד עובד אחרת, אין סטנדרטים ברורים, וקשה לדעת מה באמת קורה בעסק.</p>
+          </div>
+        </div>
+        <div class="mistake-item">
+          <div class="mistake-icon">🎯</div>
+          <div class="mistake-content">
+            <h3>אין תמונת מצב מרוכזת</h3>
+            <p>המידע מפוזר בין מערכות, אין דשבורד אחד שמראה מה באמת קורה, קשה לקבל החלטות.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution -->
+  <section class="solution">
+    <div class="container">
+      <h2>הפתרון? תהליכים ברורים + מערכות מחוברות + דשבורד אחד</h2>
+      <div class="solution-points">
+        <div class="point">
+          <span class="checkmark">✓</span>
+          <p><strong>חיבור מערכות:</strong> כל הכלים שלך מדברים ביניהם, המידע זורם אוטומטית</p>
+        </div>
+        <div class="point">
+          <span class="checkmark">✓</span>
+          <p><strong>תהליכים ברורים:</strong> כל אחד יודע מה לעשות ואיך, עם הנחיות ברורות</p>
+        </div>
+        <div class="point">
+          <span class="checkmark">✓</span>
+          <p><strong>אוטומציות חכמות:</strong> המרות, שימור וגידול - כל פעולה קורית אוטומטית לפי חוקיות מוגדרות, כמעט ללא מגע יד אדם</p>
+        </div>
+        <div class="point">
+          <span class="checkmark">✓</span>
+          <p><strong>דשבורד מרכזי:</strong> תמונה מלאה של העסק במקום אחד, החלטות מבוססות נתונים</p>
+        </div>
+        <div class="point">
+          <span class="checkmark">✓</span>
+          <p><strong>עלות חודשית מינימלית:</strong> תשלום חד-פעמי על ההקמה, בלי מנויים יקרים - רק עלויות תפעול מינימליות</p>
+        </div>
+        <div class="point">
+          <span class="checkmark">✓</span>
+          <p><strong>ליווי צמוד:</strong> לא משאירים אותך לבד, תמיכה עד הטמעה מלאה</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>בואו נסדר את העסק שלכם</h2>
+      <p class="contact-text">פגישת ייעוץ ראשונית חינם - נבין את הצרכים ונראה איך אפשר לעזור</p>
+      
+      <div class="contact-methods">
+        <a href="https://wa.me/972547866119?text=היי, אשמח לשמוע עוד על הסדרת תהליכים ודשבורד לעסק שלי" target="_blank" class="contact-button whatsapp">
+          <span class="icon">💬</span>
+          שלח הודעה בוואטסאפ
+        </a>
+        <a href="https://cal.com/haimbar" target="_blank" class="contact-button calendar">
+          <span class="icon">📅</span>
+          קבע פגישת ייעוץ
+        </a>
+        <a href="tel:+972547866119" class="contact-button phone">
+          <span class="icon">📞</span>
+          054-786-6119
+        </a>
+        <a href="mailto:haim.bar@gmail.com" class="contact-button">
+          <span class="icon">✉️</span>
+          haim.bar@gmail.com
+        </a>
+      </div>
+
+      <div class="contact-form-wrapper">
+        <h3>או השאירו פרטים ונחזור אליכם</h3>
+        <iframe class="airtable-embed" src="https://airtable.com/embed/app2chz5ihxuLQCYd/shrN86GSaGk6H2yIq" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 CRM פשוט לעסקים קטנים | ניהול לקוחות חכם ונגיש</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
         }
       });
-    </script>
-  </body>
+    });
+
+    // Add fade-in animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections and cards
+    document.querySelectorAll('section, .card, .pricing-card, .mistake-item, .point').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+
+    // Hero section should appear immediately
+    document.querySelector('.hero').style.opacity = '1';
+    document.querySelector('.hero').style.transform = 'translateY(0)';
+
+    // Image zoom functionality
+    const heroImage = document.querySelector('.hero-image');
+    if (heroImage) {
+      heroImage.style.cursor = 'pointer';
+      
+      heroImage.addEventListener('click', () => {
+        // Create modal overlay
+        const modal = document.createElement('div');
+        modal.className = 'image-modal';
+        
+        // Create close button
+        const closeBtn = document.createElement('div');
+        closeBtn.className = 'image-modal-close';
+        closeBtn.innerHTML = '✕';
+        
+        // Create enlarged image
+        const enlargedImg = document.createElement('img');
+        enlargedImg.src = heroImage.src;
+        enlargedImg.alt = heroImage.alt;
+        enlargedImg.className = 'image-modal-content';
+        
+        modal.appendChild(closeBtn);
+        modal.appendChild(enlargedImg);
+        document.body.appendChild(modal);
+        
+        // Close on click
+        const closeModal = () => {
+          modal.style.opacity = '0';
+          setTimeout(() => modal.remove(), 300);
+        };
+        
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeModal();
+        });
+        
+        // Fade in
+        setTimeout(() => modal.style.opacity = '1', 10);
+      });
+    }
+  </script>
+</body>
 </html>
