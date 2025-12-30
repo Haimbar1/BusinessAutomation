@@ -53,13 +53,27 @@
 
     /* Hero Section */
     .hero {
-      background: #ffffff;
+      background: #f8f8f8;
       color: #1a1a1a;
       text-align: center;
       padding: 100px 0;
       min-height: 500px;
       display: flex;
       align-items: center;
+    }
+
+    .hero-content {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .hero-content:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
     }
 
     .hero-image {
@@ -564,6 +578,10 @@
         padding: 60px 0;
         min-height: 400px;
       }
+
+      .hero-content {
+        padding: 25px;
+      }
       
       .tagline {
         font-size: 1rem;
@@ -609,12 +627,14 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
-      <h1>סדר ותהליכים ברורים לעסק שלך</h1>
-      <p class="tagline">חבר, עקוב, שלוט – כל העסק שלך במקום אחד, עם תשלום חודשי נמוך וללא הפתעות יקרות.</p>
-      <a href="#contact" class="cta-button">בואו נדבר</a>
-      <div style="margin-top: 3rem; display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap;">
-        <img src="dashboard.png" alt="Dashboard" class="hero-image">
-        <img src="automation.png" alt="Automation" class="hero-image">
+      <div class="hero-content">
+        <h1>סדר ותהליכים ברורים לעסק שלך</h1>
+        <p class="tagline">חבר, עקוב, שלוט – כל העסק שלך במקום אחד, עם תשלום חודשי נמוך וללא הפתעות יקרות.</p>
+        <a href="#contact" class="cta-button">בואו נדבר</a>
+        <div style="margin-top: 3rem; display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap;">
+          <img src="dashboard.png" alt="Dashboard" class="hero-image">
+          <img src="automation.png" alt="Automation" class="hero-image">
+        </div>
       </div>
     </div>
   </section>
@@ -631,8 +651,8 @@
         </div>
         <div class="card">
           <div class="icon">🏪</div>
-          <h3>עסקים קטנים</h3>
-          <p>1-20 עובדים שרוצים חיבור בין המערכות ותהליכים מוגדרים</p>
+          <h3>עסקים עם מערכות לא מחוברות</h3>
+          <p>שרוצים חיבור בין המערכות ותהליכים אוטומטיים</p>
         </div>
         <div class="card">
           <div class="icon">🔧</div>
@@ -866,8 +886,8 @@
     document.querySelector('.hero').style.transform = 'translateY(0)';
 
     // Image zoom functionality
-    const heroImage = document.querySelector('.hero-image');
-    if (heroImage) {
+    const heroImages = document.querySelectorAll('.hero-image');
+    heroImages.forEach(heroImage => {
       heroImage.style.cursor = 'pointer';
       
       heroImage.addEventListener('click', () => {
@@ -904,7 +924,7 @@
         // Fade in
         setTimeout(() => modal.style.opacity = '1', 10);
       });
-    }
+    });
   </script>
 </body>
 </html>
