@@ -835,7 +835,7 @@
 
   </script>
 <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
 <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
@@ -854,7 +854,7 @@
         },
         initialMessages: [
             'היי, אני סמארטי! 👋 אני כאן כדי לעזור לך להפסיק לבזבז זמן על עבודה סיזיפית ולתת לאוטומציות לעבוד בשבילך.',
-            'הנה 3 דרכים שבהן אני מייעל עסקים:\n\n1️⃣ **חיסכון בזמן:** שחרור המנהל והמזכירה מביורוקרטיה ידנית.\n\n2️⃣ **דיוק מקסימלי:** מערכת CRM שזוכרת הכל במקומך.\n\n3️⃣ **יעול מכירות:** אוטומציית מלאי והזמנות חכמה.\n\nניתן גם לקבוע פגישת ייעוץ חינמית כאן: https://www.smartesek.com/#contact \n\n**במה העסק שלך עוסק?**'
+            'הנה 3 דרכים שבהן אני מייעל עסקים:\n\n1️⃣ **חיסכון בזמן:** שחרור המנהל והמזכירה מביורוקרטיה ידנית.\n\n2️⃣ **דיוק מקסימלי:** מערכת CRM שזוכרת הכל במקומך.\n\n3️⃣ **יעול מכירות:** אוטומציית מלאי והזמנות חכמה.\n\n<a href="https://www.smartesek.com/#contact" target="_blank" style="color: #1a73e8; font-weight: bold; text-decoration: underline;">לחצו כאן לקביעת פגישת ייעוץ חינמית</a>\n\n**במה העסק שלך עוסק?**'
         ]
     });
 </script>
@@ -862,25 +862,32 @@
 <style>
     :root {
         --n8n-chat-primary-color: #1a73e8;
-        --n8n-chat-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     .n8n-chat-widget {
         direction: rtl !important;
         text-align: right !important;
     }
+    /* Ensures the message bubbles handle RTL and links correctly */
+    .n8n-chat-messenger {
+        direction: rtl !important;
+    }
     .n8n-chat-input input {
         direction: rtl !important;
         text-align: right !important;
     }
-    /* עיצוב הקישור שייראה בולט */
+    /* Makes sure links are clickable and styled */
     .n8n-chat-message-text a {
-        color: #1a73e8;
-        text-decoration: underline;
+        color: #1a73e8 !important;
+        text-decoration: underline !important;
+        font-weight: bold !important;
+        cursor: pointer !important;
+        position: relative;
+        z-index: 10;
     }
 </style>
-
 </body>
 </html>
+
 
 
 
