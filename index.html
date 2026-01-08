@@ -841,7 +841,7 @@
 
     createChat({
         webhookUrl: 'https://n8n.srv1239769.hstgr.cloud/webhook/b4006fc0-96c9-4e82-9837-a04f6c10f215/chat',
-        mode: 'window',
+        mode: 'window', // בועה צפה בצד האתר
         showWelcomeScreen: true,
         i18n: {
             en: {
@@ -852,28 +852,51 @@
                 inputPlaceholder: 'כתבו כאן...',
             }
         },
-initialMessages: [
+        initialMessages: [
             'היי, אני סמארטי! 👋 אני כאן כדי לעזור לך להפסיק לבזבז זמן על עבודה סיזיפית ולתת לאוטומציות לעבוד בשבילך.',
             'הנה 3 דרכים שבהן אני מייעל עסקים:\n\n1️⃣ **חיסכון בזמן:** שחרור המנהל והמזכירה מביורוקרטיה ידנית.\n\n2️⃣ **דיוק מקסימלי:** מערכת CRM שזוכרת הכל במקומך.\n\n3️⃣ **יעול מכירות:** אוטומציית מלאי והזמנות חכמה.\n\n**במה העסק שלך עוסק?**'
         ]
-    }
+    });
 </script>
 
 <style>
+    /* הגדרות עיצוב ויישור לימין (RTL) */
     :root {
-        --n8n-chat-primary-color: #1a73e8;
+        --n8n-chat-primary-color: #1a73e8; /* צבע כחול מותג */
+        --n8n-chat-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+
+    /* יישור כללי לימין */
     .n8n-chat-widget {
         direction: rtl !important;
         text-align: right !important;
     }
+
+    /* תיקון תיבת הטקסט */
     .n8n-chat-input input {
         direction: rtl !important;
         text-align: right !important;
+        padding-right: 15px !important;
+    }
+
+    /* עיצוב בועות הטקסט של ה-AI */
+    .n8n-chat-message {
+        direction: rtl !important;
+        text-align: right !important;
+    }
+
+    /* עיצוב קישורים בתוך השיחה (שה-AI ישלח) */
+    .n8n-chat-message-text a {
+        color: #1a73e8 !important;
+        text-decoration: underline !important;
+        font-weight: bold;
     }
 </style>
+
+ 
 </body>
 </html>
+
 
 
 
