@@ -857,40 +857,68 @@
             'הנה 3 דרכים שבהן אני מייעל עסקים:\n\n1️⃣ **חיסכון במשאבים:** סוכני AI\n\n2️⃣ **ריכוז ומיקוד:** מערכת CRM שמרכזת הכל במקום אחד.\n\n3️⃣ **יעול זמן:** אוטומצייה של תהליכים ידניים.\n\n**איזו פעולה ידנית הכי מאתגרת אתכם היום?**\n(לסיכום השיחה ושליחה למייל - רשמו "סיום")'
         ]
     });
-
-    // סקריפט להחלפת האייקון בכוח גם בתוך ה-Shadow DOM
-    setTimeout(() => {
-        const chatWidget = document.querySelector('n8n-chat');
-        if (chatWidget && chatWidget.shadowRoot) {
-            const style = document.createElement('style');
-            style.textContent = `
-                .n8n-chat-launcher svg { display: none !important; }
-                .n8n-chat-launcher { 
-                    background-image: url('https://cdn-icons-png.flaticon.com/512/2040/2040946.png') !important;
-                    background-size: 65% !important;
-                    background-repeat: no-repeat !important;
-                    background-position: center !important;
-                    background-color: #1a73e8 !important;
-                }
-                .n8n-chat-widget { direction: rtl !important; }
-                .n8n-chat-message { direction: rtl !important; text-align: right !important; }
-            `;
-            chatWidget.shadowRoot.appendChild(style);
-        }
-    }, 1000);
 </script>
 
 <style>
-    /* הגדרות כלליות מחוץ לצ'אט */
-    :root {
-        --n8n-chat-primary-color: #1a73e8;
-    }
+    /* 1. יישור הצ'אט לימין */
     n8n-chat {
         direction: rtl !important;
     }
+
+    /* 2. הסתרת הבועה המקורית של n8n */
+    n8n-chat::part(launcher) {
+        display: none !important;
+    }
+
+    /* 3. יצירת בועה חדשה עם האייקון שלך */
+    #custom-chat-launcher {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #1a73e8; /* הכחול שביקשת */
+        border-radius: 50%;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        cursor: pointer;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease;
+    }
+
+    #custom-chat-launcher:hover {
+        transform: scale(1.1);
+    }
+
+    #custom-chat-launcher img {
+        width: 35px;
+        height: 35px;
+    }
 </style>
+
+<div id="custom-chat-launcher" onclick="toggleN8nChat()">
+    <img src="https://cdn-icons-png.flaticon.com/512/2040/2040946.png" alt="Chat Icon">
+</div>
+
+<script>
+    // פונקציה לפתיחת הצ'אט בלחיצה על הבועה החדשה
+    function toggleN8nChat() {
+        const chatElement = document.querySelector('n8n-chat');
+        if (chatElement) {
+            // הדרך הכי פשוטה "ללחוץ" על הצ'אט המקורי שמוסתר
+            const shadowRoot = chatElement.shadowRoot;
+            const originalLauncher = shadowRoot.querySelector('.n8n-chat-launcher');
+            if (originalLauncher) {
+                originalLauncher.click();
+            }
+        }
+    }
+</script>
 </body>
 </html>
+
 
 
 
