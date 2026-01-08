@@ -834,7 +834,7 @@
 
 
   </script>
-<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+ <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 
 <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
@@ -843,11 +843,6 @@
         webhookUrl: 'https://n8n.srv1239769.hstgr.cloud/webhook/b4006fc0-96c9-4e82-9837-a04f6c10f215/chat',
         mode: 'window',
         showWelcomeScreen: true,
-        // אייקון אסיסטנט
-        launcherIcon: {
-            type: 'icon',
-            icon: 'assistant', 
-        },
         i18n: {
             en: {
                 title: 'Smarty - SmartEsek AI',
@@ -879,25 +874,34 @@
     .n8n-chat-input input {
         direction: rtl !important;
         text-align: right !important;
-        padding-right: 15px !important;
     }
 
+    /* החלפת האייקון בכוח באמצעות CSS */
+    .n8n-chat-launcher svg {
+        display: none !important; /* מסתיר את האייקון המקורי */
+    }
+
+    .n8n-chat-launcher {
+        background-image: url('https://cdn-icons-png.flaticon.com/512/2040/2040946.png') !important; /* אייקון אסיסטנט */
+        background-size: 60% !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
+        width: 60px !important;
+        height: 60px !important;
+        background-color: #1a73e8 !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+    }
+
+    /* תיקון הודעות ה-AI ליישור לימין */
     .n8n-chat-message {
         direction: rtl !important;
         text-align: right !important;
     }
-
-    /* הגדרות האייקון */
-    .n8n-chat-launcher {
-        width: 60px !important;
-        height: 60px !important;
-        background-color: #1a73e8 !important;
-    }
 </style>
-
  
 </body>
 </html>
+
 
 
 
