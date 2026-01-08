@@ -859,55 +859,58 @@
     });
 </script>
 <style>
-    /* 1. יישור כללי */
+    /* 1. הגדרות צבעים ויישור */
+    :root {
+        --smarty-navy: #10162f; /* הכחול הכהה של הבאנר שלך */
+    }
+
     n8n-chat {
         direction: rtl !important;
     }
 
-    /* 2. במקום להסתיר, אנחנו הופכים את הבועה המקורית לשקופה לגמרי ופורסים אותה על כל הבועה שלנו */
+    /* 2. הסתרה מוחלטת של הבועה המקורית ושאריותיה */
     n8n-chat::part(launcher) {
         opacity: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
         width: 65px !important;
         height: 65px !important;
         position: fixed !important;
         bottom: 20px !important;
         right: 20px !important;
-        z-index: 10001 !important; /* מעל הבועה המעוצבת */
+        z-index: 10002 !important; /* הכי גבוה כדי שיהיה לחיץ */
     }
 
-    /* 3. הבועה המעוצבת שלך - היא רק "תפאורה" מתחת למקור השקוף */
+    /* 3. הבועה המעוצבת החדשה - בצבע של הבאנר */
     #custom-smarty-launcher {
         position: fixed;
         bottom: 20px;
         right: 20px;
         width: 65px;
         height: 65px;
-        background-color: #1a73e8; 
+        background-color: var(--smarty-navy) !important; 
         border-radius: 50%;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        z-index: 10000; /* מתחת למקור השקוף */
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        z-index: 10001; /* מתחת למקור השקוף */
         display: flex;
         align-items: center;
         justify-content: center;
-        pointer-events: none; /* הלחיצה תעבור דרכה אל המקור */
+        pointer-events: none; /* מאפשר ללחיצה לעבור ל-Launcher המקורי */
     }
 
     #custom-smarty-launcher img {
         width: 35px;
         height: 35px;
-        filter: brightness(0) invert(1); 
+        filter: brightness(0) invert(1); /* הופך את האייקון ללבן נקי */
     }
 </style>
 
 <div id="custom-smarty-launcher">
     <img src="https://cdn-icons-png.flaticon.com/512/2040/2040946.png" alt="Smarty">
 </div>
-
-<script>
-    // אין צורך בסקריפט לחיצה יותר, כי המקור יושב בדיוק מעל הבועה החדשה
-</script>
 </body>
 </html>
+
 
 
 
