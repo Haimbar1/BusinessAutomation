@@ -858,46 +858,43 @@
         ]
     });
 </script>
-
 <style>
-    /* יישור הצ'אט לימין */
+    /* 1. יישור כללי */
     n8n-chat {
         direction: rtl !important;
     }
 
-    /* הסתרת הבועה המקורית של n8n כדי שלא יהיו שתיים */
+    /* 2. במקום להסתיר, אנחנו הופכים את הבועה המקורית לשקופה לגמרי ופורסים אותה על כל הבועה שלנו */
     n8n-chat::part(launcher) {
-        display: none !important;
         opacity: 0 !important;
-        pointer-events: none !important;
+        width: 65px !important;
+        height: 65px !important;
+        position: fixed !important;
+        bottom: 20px !important;
+        right: 20px !important;
+        z-index: 10001 !important; /* מעל הבועה המעוצבת */
     }
 
-    /* יצירת הבועה החדשה שלך */
+    /* 3. הבועה המעוצבת שלך - היא רק "תפאורה" מתחת למקור השקוף */
     #custom-smarty-launcher {
         position: fixed;
         bottom: 20px;
         right: 20px;
         width: 65px;
         height: 65px;
-        background-color: #1a73e8; /* הכחול שביקשת */
+        background-color: #1a73e8; 
         border-radius: 50%;
         box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        cursor: pointer;
-        z-index: 10000;
+        z-index: 10000; /* מתחת למקור השקוף */
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: transform 0.2s ease;
-    }
-
-    #custom-smarty-launcher:hover {
-        transform: scale(1.1);
+        pointer-events: none; /* הלחיצה תעבור דרכה אל המקור */
     }
 
     #custom-smarty-launcher img {
-        width: 40px;
-        height: 40px;
-        /* הופך את האייקון ללבן כדי שיראה טוב על הכחול */
+        width: 35px;
+        height: 35px;
         filter: brightness(0) invert(1); 
     }
 </style>
@@ -907,19 +904,11 @@
 </div>
 
 <script>
-    // פונקציה שמחברת את הבועה החדשה לצ'אט המוסתר
-    document.getElementById('custom-smarty-launcher').addEventListener('click', function() {
-        const chatElement = document.querySelector('n8n-chat');
-        if (chatElement && chatElement.shadowRoot) {
-            const originalLauncher = chatElement.shadowRoot.querySelector('.n8n-chat-launcher');
-            if (originalLauncher) {
-                originalLauncher.click();
-            }
-        }
-    });
+    // אין צורך בסקריפט לחיצה יותר, כי המקור יושב בדיוק מעל הבועה החדשה
 </script>
 </body>
 </html>
+
 
 
 
