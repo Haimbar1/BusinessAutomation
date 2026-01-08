@@ -891,11 +891,28 @@
         text-decoration: underline !important;
         font-weight: bold;
     }
+
+
+/* פקודה שמכריחה את הדפדפן להפוך לינקים ללחיצים גם אם הווידג'ט מנסה לחסום */
+.n8n-chat-message-text {
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+    user-select: all !important; /* מאפשר העתקה מהירה בנגיעה */
+}
+
+/* זיהוי ויזואלי של לינק אם הוא מופיע בטקסט */
+.n8n-chat-message-text:contains("http") {
+    color: #1a73e8;
+    text-decoration: underline;
+    cursor: pointer;
+}
+ 
 </style>
 
  
 </body>
 </html>
+
 
 
 
