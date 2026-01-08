@@ -857,63 +857,66 @@
             'הנה 3 דרכים שבהן אני מייעל עסקים:\n\n1️⃣ **חיסכון במשאבים:** סוכני AI\n\n2️⃣ **ריכוז ומיקוד:** מערכת CRM שמרכזת הכל במקום אחד.\n\n3️⃣ **יעול זמן:** אוטומצייה של תהליכים ידניים.\n\n**איזו פעולה ידנית הכי מאתגרת אתכם היום?**\n(לסיכום השיחה ושליחה למייל - רשמו "סיום")'
         ]
     });
+
+    // פונקציה להסתרת הבועה המקורית והפעלת החדשה
+    function fixChatLauncher() {
+        const n8nElement = document.querySelector('n8n-chat');
+        if (n8nElement && n8nElement.shadowRoot) {
+            const shadow = n8nElement.shadowRoot;
+            
+            // 1. הסתרת הבועה המקורית בתוך ה-Shadow DOM
+            const originalLauncher = shadow.querySelector('.n8n-chat-launcher');
+            if (originalLauncher) {
+                originalLauncher.style.display = 'none';
+            }
+
+            // 2. הגדרת יישור לימין בתוך הצ'אט
+            const style = document.createElement('style');
+            style.textContent = `
+                .n8n-chat-widget { direction: rtl !important; font-family: sans-serif; }
+                .n8n-chat-message { direction: rtl !important; text-align: right !important; }
+            `;
+            shadow.appendChild(style);
+        } else {
+            // אם הרכיב עוד לא נטען, ננסה שוב בעוד חצי שנייה
+            setTimeout(fixChatLauncher, 500);
+        }
+    }
+
+    fixChatLauncher();
 </script>
 
 <style>
-    /* 1. יישור הצ'אט */
-    n8n-chat {
-        direction: rtl !important;
-    }
-
-    /* 2. הזזת הבועה הוורודה המקורית אל מחוץ למסך כדי שלא תיראה */
-    n8n-chat::part(launcher) {
-        position: fixed !important;
-        right: -500px !important; /* מזיז אותה רחוק שמאלה */
-        opacity: 0 !important;
-    }
-
-    /* 3. הבועה החדשה שלך - כחול נאבי עמוק */
-    #smarty-fix-launcher {
+    /* הבועה החדשה והמעוצבת שלך */
+    #custom-smarty-launcher {
         position: fixed !important;
         bottom: 25px !important;
         right: 25px !important;
         width: 65px !important;
         height: 65px !important;
-        background-color: #10162f !important; /* הצבע הכהה של הבאנר */
+        background-color: #0f172a !important; /* כחול כהה זהה לבאנר */
         border-radius: 50% !important;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
-        z-index: 2147483647 !important; 
+        box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
+        z-index: 2147483647 !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         cursor: pointer !important;
     }
 
-    #smarty-fix-launcher img {
-        width: 35px !important;
-        height: 35px !important;
-        filter: brightness(0) invert(1) !important; /* הופך ללבן נקי */
-        pointer-events: none !important;
+    #custom-smarty-launcher img {
+        width: 38px !important;
+        height: 38px !important;
+        filter: brightness(0) invert(1) !important; /* הופך ללבן */
     }
 </style>
- 
-<div id="smarty-fix-launcher" onclick="openSmartyChat()">
+
+<div id="custom-smarty-launcher" onclick="document.querySelector('n8n-chat').shadowRoot.querySelector('.n8n-chat-launcher').click()">
     <img src="https://cdn-icons-png.flaticon.com/512/2040/2040946.png" alt="Smarty">
 </div>
-
-<script>
-    function openSmartyChat() {
-        const chatElement = document.querySelector('n8n-chat');
-        if (chatElement && chatElement.shadowRoot) {
-            const originalLauncher = chatElement.shadowRoot.querySelector('.n8n-chat-launcher');
-            if (originalLauncher) {
-                originalLauncher.click();
-            }
-        }
-    }
-</script>
 </body>
 </html>
+
 
 
 
