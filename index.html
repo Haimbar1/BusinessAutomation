@@ -858,30 +858,31 @@
         ]
     });
 </script>
+
 <style>
-    /* 1. יישור הצ'אט עצמו */
+    /* 1. יישור הצ'אט */
     n8n-chat {
         direction: rtl !important;
     }
 
-    /* 2. העלמת הבועה המקורית של n8n לחלוטין */
+    /* 2. הזזת הבועה הוורודה המקורית אל מחוץ למסך כדי שלא תיראה */
     n8n-chat::part(launcher) {
+        position: fixed !important;
+        right: -500px !important; /* מזיז אותה רחוק שמאלה */
         opacity: 0 !important;
-        visibility: hidden !important;
-        pointer-events: none !important;
     }
 
-    /* 3. הבועה החדשה - עיצוב אגרסיבי */
+    /* 3. הבועה החדשה שלך - כחול נאבי עמוק */
     #smarty-fix-launcher {
         position: fixed !important;
         bottom: 25px !important;
         right: 25px !important;
         width: 65px !important;
         height: 65px !important;
-        background-color: #10162f !important; /* כחול כהה (נאבי) */
+        background-color: #10162f !important; /* הצבע הכהה של הבאנר */
         border-radius: 50% !important;
         box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
-        z-index: 2147483647 !important; /* המספר הכי גבוה האפשרי */
+        z-index: 2147483647 !important; 
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -891,11 +892,11 @@
     #smarty-fix-launcher img {
         width: 35px !important;
         height: 35px !important;
-        filter: brightness(0) invert(1) !important;
+        filter: brightness(0) invert(1) !important; /* הופך ללבן נקי */
         pointer-events: none !important;
     }
 </style>
-
+ 
 <div id="smarty-fix-launcher" onclick="openSmartyChat()">
     <img src="https://cdn-icons-png.flaticon.com/512/2040/2040946.png" alt="Smarty">
 </div>
@@ -913,6 +914,7 @@
 </script>
 </body>
 </html>
+
 
 
 
