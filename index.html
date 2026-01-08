@@ -834,48 +834,54 @@
 
 
   </script>
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
- <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    createChat({
+        webhookUrl: 'https://n8n.srv1239769.hstgr.cloud/webhook/b4006fc0-96c9-4e82-9837-a04f6c10f215/chat',
+        mode: 'window', // מצב חלונית צפה (לא מסך מלא)
+        showWelcomeScreen: true,
+        i18n: {
+            en: {
+                title: 'Smarty - SmartEsek AI',
+                subtitle: 'היועץ לאוטומציה של SmartEsek',
+                footer: 'Powered by SmartEsek',
+                getStarted: 'בואו נתחיל',
+                inputPlaceholder: 'כתבו כאן...',
+            }
+        },
+        initialMessages: [
+            'היי, אני סמארטי! 👋 אני כאן כדי לעזור לך להפסיק לבזבז זמן על עבודה סיזיפית ולתת לאוטומציות לעבוד בשבילך.',
+            'הנה 3 דרכים שבהן אני מייעל עסקים:\n\n1️⃣ **חיסכון בזמן:** שחרור המנהל והמזכירה מביורוקרטיה ידנית.\n2️⃣ **דיוק מקסימלי:** מערכת CRM שזוכרת הכל במקומך.\n3️⃣ **יעול מכירות:** אוטומציית מלאי והזמנות חכמה.\n\n**במה העסק שלך עוסק?**'
+        ]
+    });
+</script>
 
 <style>
-  /* הגדרת כיוון כתיבה מימין לשמאל כדי שהעברית תיראה טוב */
-  :root {
-    --n8n-chat-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  .n8n-chat-messages {
-    direction: rtl;
-  }
-</style>
-
- 
-<script type="module">
-  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-
-  createChat({
-    webhookUrl: 'https://n8n.srv1239769.hstgr.cloud/webhook/b4006fc0-96c9-4e82-9837-a04f6c10f215/chat',
-    webhookConfig: {
-      method: 'POST'
-    },
-    showWelcomeScreen: true,
-    initialMessages: [
-      'שלום! אני Smarty, העוזר הדיגיטלי של SmartEsek 👋',
-      'היי, אני סמארטי! אני כאן כדי לעזור לך להפסיק לבזבז זמן על עבודה סיזיפית. הנה 3 דרכים שבהן אני מייעל עסקים:\n1. חיסכון בזמן למזכירה.\n2. אפס טעויות ב-CRM.\n3. אוטומציות מלאי חכמות.\n\nבמה העסק שלך עוסק?'
-    ],
-    i18n: {
-      en: { 
-        title: 'SmartEsek - עוזר חכם',
-        subtitle: 'נשמח לעזור לך לייעל את העסק',
-        inputPlaceholder: 'הקלד את הודעתך כאן...',
-        getStarted: 'התחל שיחה',
-        footer: 'מופעל על ידי SmartEsek'
-      }
+    /* הגדרות לעיצוב ויישור לימין (RTL) */
+    :root {
+        --n8n-chat-primary-color: #1a73e8;
+        --n8n-chat-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-  });
-</scrip
- 
+    .n8n-chat-widget {
+        direction: rtl !important;
+        text-align: right !important;
+    }
+    .n8n-chat-input input {
+        direction: rtl !important;
+        text-align: right !important;
+    }
+    /* התאמת מיקום הבועה (בדרך כלל בצד ימין למטה) */
+    .n8n-chat-launcher {
+        right: 20px;
+        bottom: 20px;
+    }
+</style>
 
 </body>
 </html>
+
 
 
 
