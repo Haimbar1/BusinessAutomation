@@ -847,32 +847,16 @@
   }
 </style>
 
-<script type="module">
-  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+createChat({
+  webhookUrl: 'YOUR_WEBHOOK_URL',
+  options: {
+    welcomeMessage: 'היי, אני סמארטי! אני כאן כדי לעזור לך להפסיק לבזבז זמן על עבודה סיזיפית. הנה 3 דרכים שבהן אני מייעל עסקים:\n1. חיסכון בזמן למזכירה.\n2. אפס טעויות ב-CRM.\n3. אוטומציות מלאי חכמות.\n\nבמה העסק שלך עוסק?',
+  }
+});
 
-  createChat({
-    webhookUrl: 'https://n8n.srv1239769.hstgr.cloud/webhook/b4006fc0-96c9-4e82-9837-a04f6c10f215/chat',
-    webhookConfig: {
-      method: 'POST'
-    },
-    showWelcomeScreen: true,
-    initialMessages: [
-      'שלום! אני Smarty, העוזר הדיגיטלי של SmartEsek 👋',
-      'אני כאן כדי להראות לך איך להפוך את העסק שלך לאוטומטי ומאורגן יותר. במה תרצה שנתמקד?'
-    ],
-    i18n: {
-      en: { 
-        title: 'SmartEsek - עוזר חכם',
-        subtitle: 'נשמח לעזור לך לייעל את העסק',
-        inputPlaceholder: 'הקלד את הודעתך כאן...',
-        getStarted: 'התחל שיחה',
-        footer: 'מופעל על ידי SmartEsek'
-      }
-    }
-  });
-</script>
 </body>
 </html>
+
 
 
 
