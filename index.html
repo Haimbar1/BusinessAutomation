@@ -834,8 +834,7 @@
 
 
   </script>
-
- <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
@@ -854,7 +853,7 @@
         },
         initialMessages: [
             'היי, אני סמארטי! 👋 אני כאן כדי לעזור לך לחסוך זמן ולתת לאוטומציות לעבוד בשבילך.',
-            'הנה מה שאני עושה:\n✅ חוסך שעות של עבודה ידנית\n✅ מחבר בין המערכות שלך (CRM, WhatsApp, דאטה)\n✅ מונע טעויות אנוש\n\n<a href="https://www.smartesek.com/#contact" target="_blank" style="color: #1a73e8; font-weight: bold; text-decoration: underline;">לחצו כאן לקביעת פגישת ייעוץ חינמית</a>\n\n**איזו פעולה ידנית הכי מעכבת אתכם היום?**'
+            'הנה מה שאני עושה:<br><br>✅ חוסך שעות של עבודה ידנית<br>✅ מחבר בין המערכות שלך<br>✅ מונע טעויות אנוש<br><br><a href="https://www.smartesek.com/#contact" target="_blank" style="color: #1a73e8; font-weight: bold; text-decoration: underline;">לחצו כאן לקביעת פגישת ייעוץ חינמית</a><br><br>**איזו פעולה ידנית הכי מעכבת אתכם היום?**'
         ]
     });
 </script>
@@ -874,16 +873,19 @@
         direction: rtl !important;
         text-align: right !important;
     }
+    /* עיצוב הקישור */
     .n8n-chat-message-text a {
         color: #1a73e8 !important;
         text-decoration: underline !important;
         font-weight: bold !important;
-        cursor: pointer !important;
+        display: inline-block;
+        margin: 5px 0;
     }
 </style>
  
 </body>
 </html>
+
 
 
 
