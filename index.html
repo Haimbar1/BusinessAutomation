@@ -835,12 +835,13 @@
 
   </script>
 <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
     createChat({
         webhookUrl: 'https://n8n.srv1239769.hstgr.cloud/webhook/b4006fc0-96c9-4e82-9837-a04f6c10f215/chat',
-        mode: 'window', // מצב חלונית צפה (לא מסך מלא)
+        mode: 'window',
         showWelcomeScreen: true,
         i18n: {
             en: {
@@ -853,13 +854,12 @@
         },
         initialMessages: [
             'היי, אני סמארטי! 👋 אני כאן כדי לעזור לך להפסיק לבזבז זמן על עבודה סיזיפית ולתת לאוטומציות לעבוד בשבילך.',
-            'הנה 3 דרכים שבהן אני מייעל עסקים:\n\n1️⃣ **חיסכון בזמן:** שחרור המנהל והמזכירה מביורוקרטיה ידנית.\n2️⃣ **דיוק מקסימלי:** מערכת CRM שזוכרת הכל במקומך.\n3️⃣ **יעול מכירות:** אוטומציית מלאי והזמנות חכמה.\n\n**במה העסק שלך עוסק?**'
+            'הנה 3 דרכים שבהן אני מייעל עסקים:\n\n1️⃣ **חיסכון בזמן:** שחרור המנהל והמזכירה מביורוקרטיה ידנית.\n\n2️⃣ **דיוק מקסימלי:** מערכת CRM שזוכרת הכל במקומך.\n\n3️⃣ **יעול מכירות:** אוטומציית מלאי והזמנות חכמה.\n\nניתן גם לקבוע פגישת ייעוץ חינמית כאן: https://www.smartesek.com/#contact \n\n**במה העסק שלך עוסק?**'
         ]
     });
 </script>
 
 <style>
-    /* הגדרות לעיצוב ויישור לימין (RTL) */
     :root {
         --n8n-chat-primary-color: #1a73e8;
         --n8n-chat-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -872,15 +872,16 @@
         direction: rtl !important;
         text-align: right !important;
     }
-    /* התאמת מיקום הבועה (בדרך כלל בצד ימין למטה) */
-    .n8n-chat-launcher {
-        right: 20px;
-        bottom: 20px;
+    /* עיצוב הקישור שייראה בולט */
+    .n8n-chat-message-text a {
+        color: #1a73e8;
+        text-decoration: underline;
     }
 </style>
 
 </body>
 </html>
+
 
 
 
