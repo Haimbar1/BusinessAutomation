@@ -834,7 +834,7 @@
 
 
   </script>
- <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 
 <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
@@ -857,50 +857,41 @@
             'הנה 3 דרכים שבהן אני מייעל עסקים:\n\n1️⃣ **חיסכון במשאבים:** סוכני AI\n\n2️⃣ **ריכוז ומיקוד:** מערכת CRM שמרכזת הכל במקום אחד.\n\n3️⃣ **יעול זמן:** אוטומצייה של תהליכים ידניים.\n\n**איזו פעולה ידנית הכי מאתגרת אתכם היום?**\n(לסיכום השיחה ושליחה למייל - רשמו "סיום")'
         ]
     });
+
+    // סקריפט להחלפת האייקון בכוח גם בתוך ה-Shadow DOM
+    setTimeout(() => {
+        const chatWidget = document.querySelector('n8n-chat');
+        if (chatWidget && chatWidget.shadowRoot) {
+            const style = document.createElement('style');
+            style.textContent = `
+                .n8n-chat-launcher svg { display: none !important; }
+                .n8n-chat-launcher { 
+                    background-image: url('https://cdn-icons-png.flaticon.com/512/2040/2040946.png') !important;
+                    background-size: 65% !important;
+                    background-repeat: no-repeat !important;
+                    background-position: center !important;
+                    background-color: #1a73e8 !important;
+                }
+                .n8n-chat-widget { direction: rtl !important; }
+                .n8n-chat-message { direction: rtl !important; text-align: right !important; }
+            `;
+            chatWidget.shadowRoot.appendChild(style);
+        }
+    }, 1000);
 </script>
 
 <style>
+    /* הגדרות כלליות מחוץ לצ'אט */
     :root {
         --n8n-chat-primary-color: #1a73e8;
-        --n8n-chat-font-family: 'Noto Sans Hebrew', sans-serif;
     }
-
-    /* יישור לימין */
-    .n8n-chat-widget {
+    n8n-chat {
         direction: rtl !important;
-        text-align: right !important;
-    }
-
-    .n8n-chat-input input {
-        direction: rtl !important;
-        text-align: right !important;
-    }
-
-    /* החלפת האייקון בכוח באמצעות CSS */
-    .n8n-chat-launcher svg {
-        display: none !important; /* מסתיר את האייקון המקורי */
-    }
-
-    .n8n-chat-launcher {
-        background-image: url('https://cdn-icons-png.flaticon.com/512/2040/2040946.png') !important; /* אייקון אסיסטנט */
-        background-size: 60% !important;
-        background-repeat: no-repeat !important;
-        background-position: center !important;
-        width: 60px !important;
-        height: 60px !important;
-        background-color: #1a73e8 !important;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
-    }
-
-    /* תיקון הודעות ה-AI ליישור לימין */
-    .n8n-chat-message {
-        direction: rtl !important;
-        text-align: right !important;
     }
 </style>
- 
 </body>
 </html>
+
 
 
 
