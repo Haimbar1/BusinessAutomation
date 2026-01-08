@@ -861,63 +861,56 @@
 </script>
 
 <style>
-    /* יישור לימין של תוכן הצ'אט */
+    /* 1. יישור לימין של תוכן הצ'אט */
     n8n-chat {
         direction: rtl !important;
     }
 
-    /* הסתרת הבועה המקורית - ניסיון דרך ה-Shadow DOM Part */
+    /* 2. הופכים את הבועה המקורית לשקופה לגמרי ופורסים אותה מעל הבועה החדשה */
     n8n-chat::part(launcher) {
         background-color: transparent !important;
         background-image: none !important;
         box-shadow: none !important;
-        border: none !important;
-        outline: none !important;
+        opacity: 0 !important; /* שקוף לחלוטין */
+        width: 70px !important;
+        height: 70px !important;
+        z-index: 2147483647 !important; /* הכי גבוה כדי שיהיה לחיץ */
     }
 
-    /* הבועה החדשה שלך - לחיצה עוברת דרכה */
-    #custom-smarty-launcher {
+    /* 3. העלמת האייקון הפנימי (הלבן) של הבועה המקורית */
+    n8n-chat::part(launcher-icon) {
+        display: none !important;
+    }
+
+    /* 4. הבועה הכחולה הכהה שלך - היא רק רקע מתחת לשקיפות */
+    #smarty-new-launcher {
         position: fixed !important;
         bottom: 20px !important;
         right: 20px !important;
-        width: 65px !important;
-        height: 65px !important;
-        background-color: #0f172a !important; /* הכחול הכהה של הבאנר */
+        width: 70px !important;
+        height: 70px !important;
+        background-color: #10162f !important; /* כחול כהה (נאבי) */
         border-radius: 50% !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.4) !important;
-        z-index: 10000 !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        cursor: pointer !important;
-        pointer-events: auto !important; /* מוודא שהיא לחיצה */
+        z-index: 2147483646 !important; /* אחד מתחת לבועה השקופה */
+        pointer-events: none !important; /* לחיצה עוברת דרכו */
     }
 
-    #custom-smarty-launcher img {
-        width: 38px !important;
-        height: 38px !important;
-        filter: brightness(0) invert(1) !important;
+    #smarty-new-launcher img {
+        width: 40px !important;
+        height: 40px !important;
+        filter: brightness(0) invert(1) !important; /* אייקון לבן */
     }
 </style>
 
-<div id="custom-smarty-launcher" onclick="openN8nChat()">
+<div id="smarty-new-launcher">
     <img src="https://cdn-icons-png.flaticon.com/512/2040/2040946.png" alt="Smarty">
 </div>
-
-<script>
-    function openN8nChat() {
-        const chatElement = document.querySelector('n8n-chat');
-        if (chatElement && chatElement.shadowRoot) {
-            const originalLauncher = chatElement.shadowRoot.querySelector('.n8n-chat-launcher');
-            if (originalLauncher) {
-                originalLauncher.click();
-            }
-        }
-    }
-</script>
 </body>
 </html>
-
 
 
 
