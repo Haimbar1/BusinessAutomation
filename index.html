@@ -841,7 +841,6 @@
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
     createChat({
-     
         webhookUrl: 'https://n8n.srv1239769.hstgr.cloud/webhook/ffcf29b6-19e9-40fd-81a6-132910560043/chat',
         mode: 'window',
         showWelcomeScreen: true,
@@ -862,56 +861,82 @@
 </script>
 
 <style>
-    /* 1. יישור לימין של תוכן הצ'אט */
+    /* 1. Global RTL and Font */
     n8n-chat {
         direction: rtl !important;
+        --chat--header--background: #10162f !important; /* Matches your logo background */
     }
 
-    /* 2. הופכים את הבועה המקורית לשקופה לגמרי ופורסים אותה מעל הבועה החדשה */
+    /* 2. Adding the Banner Image at the top */
+    n8n-chat::part(header) {
+        background-image: url('YOUR_UPLOADED_IMAGE_URL_HERE'); /* Replace with your actual hosted image URL */
+        background-size: cover;
+        background-position: center;
+        height: 120px !important; /* Increased height for the banner */
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 10px;
+    }
+
+    /* 3. Darker Frame for Input Area */
+    n8n-chat::part(input-container) {
+        border: 2px solid #10162f !important; /* Dark border */
+        margin: 10px !important;
+        border-radius: 8px !important;
+        background: #ffffff !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    /* 4. Launcher Customization */
     n8n-chat::part(launcher) {
         background-color: transparent !important;
         background-image: none !important;
         box-shadow: none !important;
-        opacity: 0 !important; /* שקוף לחלוטין */
+        opacity: 0 !important;
         width: 70px !important;
         height: 70px !important;
-        z-index: 2147483647 !important; /* הכי גבוה כדי שיהיה לחיץ */
+        z-index: 2147483647 !important;
     }
 
-    /* 3. העלמת האייקון הפנימי (הלבן) של הבועה המקורית */
     n8n-chat::part(launcher-icon) {
         display: none !important;
     }
 
-    /* 4. הבועה הכחולה הכהה שלך - היא רק רקע מתחת לשקיפות */
     #smarty-new-launcher {
         position: fixed !important;
         bottom: 20px !important;
         right: 20px !important;
         width: 70px !important;
         height: 70px !important;
-        background-color: #10162f !important; /* כחול כהה (נאבי) */
+        background-color: #10162f !important;
         border-radius: 50% !important;
         box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        z-index: 2147483646 !important; /* אחד מתחת לבועה השקופה */
-        pointer-events: none !important; /* לחיצה עוברת דרכו */
+        z-index: 2147483646 !important;
+        pointer-events: none !important;
     }
 
     #smarty-new-launcher img {
         width: 40px !important;
         height: 40px !important;
-        filter: brightness(0) invert(1) !important; /* אייקון לבן */
+        filter: brightness(0) invert(1) !important;
+    }
+
+    /* 5. Improve message bubbles for RTL */
+    n8n-chat::part(message) {
+        text-align: right !important;
     }
 </style>
 
 <div id="smarty-new-launcher">
     <img src="https://cdn-icons-png.flaticon.com/512/2040/2040946.png" alt="Smarty">
 </div>
+
 </body>
 </html>
+
 
 
 
