@@ -20,6 +20,7 @@
       line-height: 1.6;
       color: #1a1a1a;
       background: #ffffff;
+      font-weight: 300;
     }
 
     .container {
@@ -37,7 +38,7 @@
     }
 
     h1, h2, h3 {
-      font-weight: 700;
+      font-weight: 400;
       margin-bottom: 1rem;
     }
 
@@ -109,7 +110,7 @@
       max-width: 700px;
       margin: 0 auto 2rem;
       opacity: 0.95;
-      font-weight: 600;
+      font-weight: 400;
     }
 
     .cta-button {
@@ -119,7 +120,7 @@
       color: white;
       text-decoration: none;
       border-radius: 8px;
-      font-weight: 600;
+      font-weight: 400;
       font-size: 1.1rem;
       transition: transform 0.2s, box-shadow 0.2s;
       margin-bottom: 2rem;
@@ -197,7 +198,7 @@
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
-      font-weight: 700;
+      font-weight: 400;
       margin: 0 auto 1.5rem;
     }
 
@@ -254,7 +255,7 @@
       padding: 5px 15px;
       border-radius: 20px;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 400;
     }
 
     .pricing-card h3 {
@@ -263,7 +264,7 @@
 
     .price {
       font-size: 2rem;
-      font-weight: 700;
+      font-weight: 400;
       margin: 1.5rem 0;
     }
 
@@ -343,7 +344,7 @@
     .checkmark {
       color: #28a745;
       font-size: 1.5rem;
-      font-weight: 700;
+      font-weight: 400;
       flex-shrink: 0;
     }
 
@@ -385,7 +386,7 @@
       color: #1a1a1a;
       text-decoration: none;
       border-radius: 8px;
-      font-weight: 600;
+      font-weight: 400;
       font-size: 1.1rem;
       transition: transform 0.2s, box-shadow 0.2s;
     }
@@ -477,7 +478,7 @@
       border-radius: 8px;
       font-family: 'Noto Sans Hebrew', sans-serif;
       font-size: 1.1rem;
-      font-weight: 600;
+      font-weight: 400;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
     }
@@ -532,6 +533,38 @@
       box-shadow: 0 6px 16px rgba(0,0,0,0.4);
     }
 
+    .chat-bubble-tooltip {
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      background: white;
+      color: #1a1a1a;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 14px;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      opacity: 1;
+      pointer-events: auto;
+      transition: opacity 0.3s, transform 0.3s;
+      transform: translateY(0);
+      direction: rtl;
+      border: 1px solid #e0e0e0;
+    }
+
+    .chat-bubble-tooltip::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      right: 20px;
+      width: 12px;
+      height: 12px;
+      background: white;
+      transform: rotate(45deg);
+      border-right: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
     .chat-widget {
       position: fixed;
       bottom: 90px;
@@ -563,13 +596,16 @@
 
     .chat-logo {
       width: 100%;
-      height: 50px;
-      object-fit: contain;
       position: absolute;
       left: 0;
       right: 0;
       top: 50%;
       transform: translateY(-50%);
+      text-align: center;
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
 
     .close-chat {
@@ -1026,6 +1062,7 @@
 
   <!-- Chat Widget -->
   <div id="chat-bubble" class="chat-bubble">
+    <div class="chat-bubble-tooltip">אני העוזר החכם שלך</div>
     <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <!-- Robot head -->
       <rect x="6" y="7" width="12" height="10" rx="2" fill="white"/>
@@ -1042,12 +1079,12 @@
 
   <div id="chat-widget" class="chat-widget">
     <div class="chat-header">
-      <img src="https://www.smartesek.com/Smart%20Esek%20logo.png" alt="Smart Esek" class="chat-logo">
+      <div class="chat-logo" style="font-weight: 400;">SMART ESEK</div>
       <button id="close-chat" class="close-chat">✕</button>
     </div>
     <div id="chat-messages" class="chat-messages">
       <div class="bot-message">
-        <div class="message-bubble bot">היי, אני סמארטי! 👋 אני כאן כדי לעזור לך להפסיק לבזבז זמן על עבודה סיזיפית ולתת לאוטומציות לעבוד בשבילך.</div>
+        <div class="message-bubble bot">איך אני יכול לעזור לך?</div>
       </div>
     </div>
     <div class="chat-input-wrapper">
@@ -1209,4 +1246,3 @@
   </script>
 </body>
 </html>
-
