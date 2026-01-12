@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -510,6 +509,240 @@
       opacity: 0.8;
     }
 
+    /* Chat Widget Styles */
+    .chat-bubble {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #2c5aa0 0%, #1e3a6b 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      z-index: 1000;
+    }
+
+    .chat-bubble:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+
+    .chat-widget {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 380px;
+      height: 550px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      display: none;
+      flex-direction: column;
+      z-index: 999;
+      border: 2px solid #1e3a6b;
+    }
+
+    .chat-widget.open {
+      display: flex;
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, #2c5aa0 0%, #1e3a6b 100%);
+      padding: 15px;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .chat-logo {
+      width: 100%;
+      height: 50px;
+      object-fit: contain;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .close-chat {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      position: relative;
+      transition: opacity 0.2s;
+    }
+
+    .close-chat:hover {
+      opacity: 0.8;
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      background: #f8f8f8;
+      direction: rtl;
+    }
+
+    .bot-message,
+    .user-message {
+      margin-bottom: 15px;
+      display: flex;
+      direction: rtl;
+    }
+
+    .user-message {
+      justify-content: flex-start;
+    }
+
+    .bot-message {
+      justify-content: flex-end;
+    }
+
+    .message-bubble {
+      max-width: 75%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.4;
+      word-wrap: break-word;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .message-bubble.bot {
+      background: #2c5aa0;
+      color: white;
+      border-bottom-right-radius: 4px;
+    }
+
+    .message-bubble.user {
+      background: white;
+      color: #1a1a1a;
+      border-bottom-left-radius: 4px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .chat-input-wrapper {
+      display: flex;
+      padding: 15px;
+      background: white;
+      border-top: 1px solid #e0e0e0;
+      border-radius: 0 0 10px 10px;
+      direction: rtl;
+    }
+
+    .chat-input {
+      flex: 1;
+      border: 1px solid #e0e0e0;
+      border-radius: 20px;
+      padding: 10px 15px;
+      font-family: 'Noto Sans Hebrew', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .chat-input:focus {
+      border-color: #2c5aa0;
+    }
+
+    .send-button {
+      background: #2c5aa0;
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .send-button:hover {
+      background: #1e3a6b;
+    }
+
+    .send-button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      padding: 12px 16px;
+      background: #2c5aa0;
+      border-radius: 12px;
+      width: fit-content;
+      margin-right: auto;
+    }
+
+    .typing-indicator span {
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      animation: typing 1.4s infinite;
+    }
+
+    .typing-indicator span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .typing-indicator span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes typing {
+      0%, 60%, 100% {
+        opacity: 0.3;
+        transform: translateY(0);
+      }
+      30% {
+        opacity: 1;
+        transform: translateY(-4px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .chat-widget {
+        width: calc(100vw - 40px);
+        height: calc(100vh - 140px);
+        bottom: 90px;
+        right: 20px;
+        left: 20px;
+      }
+      
+      .chat-bubble {
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       h1 {
@@ -791,6 +1024,42 @@
     </div>
   </footer>
 
+  <!-- Chat Widget -->
+  <div id="chat-bubble" class="chat-bubble">
+    <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Robot head -->
+      <rect x="6" y="7" width="12" height="10" rx="2" fill="white"/>
+      <!-- Antenna -->
+      <circle cx="12" cy="4" r="1" fill="white"/>
+      <line x1="12" y1="5" x2="12" y2="7" stroke="white" stroke-width="1.5"/>
+      <!-- Eyes -->
+      <circle cx="9" cy="11" r="1.5" fill="#2c5aa0"/>
+      <circle cx="15" cy="11" r="1.5" fill="#2c5aa0"/>
+      <!-- Mouth -->
+      <rect x="9" y="14" width="6" height="1.5" rx="0.5" fill="#2c5aa0"/>
+    </svg>
+  </div>
+
+  <div id="chat-widget" class="chat-widget">
+    <div class="chat-header">
+      <img src="https://www.smartesek.com/Smart%20Esek%20logo.png" alt="Smart Esek" class="chat-logo">
+      <button id="close-chat" class="close-chat">✕</button>
+    </div>
+    <div id="chat-messages" class="chat-messages">
+      <div class="bot-message">
+        <div class="message-bubble bot">איך אני יכול לעזור לך?</div>
+      </div>
+    </div>
+    <div class="chat-input-wrapper">
+      <input type="text" id="chat-input" class="chat-input" placeholder="הקלד הודעה..." dir="rtl">
+      <button id="send-message" class="send-button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
   <script>
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -833,142 +1102,110 @@
     document.querySelector('.hero').style.opacity = '1';
     document.querySelector('.hero').style.transform = 'translateY(0)';
 
+    // Chat Widget Functionality
+    const chatBubble = document.getElementById('chat-bubble');
+    const chatWidget = document.getElementById('chat-widget');
+    const closeChat = document.getElementById('close-chat');
+    const chatInput = document.getElementById('chat-input');
+    const sendButton = document.getElementById('send-message');
+    const chatMessages = document.getElementById('chat-messages');
+    const CHAT_URL = 'https://n8n.srv1239769.hstgr.cloud/webhook/ffcf29b6-19e9-40fd-81a6-132910560043/chat';
 
-  </script>
-<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    let sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
 
-<script type="module">
-    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-
-    createChat({
-        webhookUrl: 'https://n8n.srv1239769.hstgr.cloud/webhook/ffcf29b6-19e9-40fd-81a6-132910560043/chat',
-        mode: 'window',
-        showWelcomeScreen: true,
-        i18n: {
-            en: {
-                title: ' ', // Cleared to let the banner breathe
-                subtitle: ' ', 
-                footer: 'Powered by SmartEsek',
-                getStarted: 'בואו נתחיל',
-                inputPlaceholder: 'כתבו כאן...',
-            }
-        },
-        initialMessages: [
-            'היי, אני סמארטי! 👋 אני כאן כדי לעזור לך להפסיק לבזבז זמן על עבודה סיזיפית ולתת לאוטומציות לעבוד בשבילך.',
-            'הנה 3 דרכים שבהן אני מייעל עסקים:\n\n1️⃣ **חיסכון במשאבים:** סוכני AI.\n\n2️⃣ **יעול זמן:** אוטומצייה של תהליכים ידניים.\n\n**3️⃣**ריכוז ומיקוד:מערכת CRM שמרכזת הכל במקום אחד.\n\n'
-        ]
+    chatBubble.addEventListener('click', () => {
+      chatWidget.classList.add('open');
+      chatBubble.style.display = 'none';
+      chatInput.focus();
     });
-</script>
 
-<style>
-    /* 1. Target the host element */
-    n8n-chat {
-        --chat--header--background: #10162f !important;
-        direction: rtl !important;
+    closeChat.addEventListener('click', () => {
+      chatWidget.classList.remove('open');
+      chatBubble.style.display = 'flex';
+    });
+
+    function addMessage(text, isBot = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = isBot ? 'bot-message' : 'user-message';
+      
+      const bubble = document.createElement('div');
+      bubble.className = `message-bubble ${isBot ? 'bot' : 'user'}`;
+      bubble.textContent = text;
+      
+      messageDiv.appendChild(bubble);
+      chatMessages.appendChild(messageDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    /* 2. FORCING THE BANNER - Replace the URL below with your logo link */
-    n8n-chat::part(header) {
-        background-image: url('https://www.smartesek.com/Smart%20Esek%20logo.png') !important; 
-        background-size: contain !important;
-        background-repeat: no-repeat !important;
-        background-position: center !important;
-        height: 100px !important;
-        background-color: #10162f !important;
+    function showTypingIndicator() {
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'bot-message typing-message';
+      typingDiv.innerHTML = `
+        <div class="typing-indicator">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      `;
+      chatMessages.appendChild(typingDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      return typingDiv;
     }
 
-    /* 3. INPUT FRAME - Making it very visible */
-    n8n-chat::part(input-container) {
-        border: 2px solid #10162f !important; /* Dark Navy Frame */
-        border-radius: 10px !important;
-        margin: 15px !important;
-        background: #ffffff !important;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2) !important;
+    function removeTypingIndicator(indicator) {
+      if (indicator && indicator.parentNode) {
+        indicator.parentNode.removeChild(indicator);
+      }
     }
 
-    /* 4. DRAG INPUT FIELD - Inside the container */
-    n8n-chat::part(input) {
-        color: #10162f !important;
-        padding: 10px !important;
+    async function sendMessage() {
+      const message = chatInput.value.trim();
+      if (!message) return;
+
+      addMessage(message, false);
+      chatInput.value = '';
+      sendButton.disabled = true;
+
+      const typingIndicator = showTypingIndicator();
+
+      try {
+        const response = await fetch(CHAT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            action: 'sendMessage',
+            sessionId: sessionId,
+            chatInput: message
+          })
+        });
+
+        const data = await response.json();
+        removeTypingIndicator(typingIndicator);
+        
+        if (data.output) {
+          addMessage(data.output, true);
+        } else {
+          addMessage('מצטער, אירעה שגיאה. נסה שוב.', true);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        removeTypingIndicator(typingIndicator);
+        addMessage('מצטער, אירעה שגיאה בחיבור. נסה שוב.', true);
+      } finally {
+        sendButton.disabled = false;
+        chatInput.focus();
+      }
     }
 
-    /* 5. Launcher logic (Keeping your existing working launcher) */
-    n8n-chat::part(launcher) {
-        background-color: transparent !important;
-        background-image: none !important;
-        box-shadow: none !important;
-        opacity: 0 !important;
-        width: 70px !important;
-        height: 70px !important;
-        z-index: 2147483647 !important;
-    }
+    sendButton.addEventListener('click', sendMessage);
 
-    n8n-chat::part(launcher-icon) {
-        display: none !important;
-    }
-
-    #smarty-new-launcher {
-        position: fixed !important;
-        bottom: 20px !important;
-        right: 20px !important;
-        width: 70px !important;
-        height: 70px !important;
-        background-color: #10162f !important;
-        border-radius: 50% !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        z-index: 2147483646 !important;
-        pointer-events: none !important;
-    }
-
-    #smarty-new-launcher img {
-        width: 40px !important;
-        height: 40px !important;
-        filter: brightness(0) invert(1) !important;
-    }
-</style>
-
-<div id="smarty-new-launcher">
-    <img src="https://cdn-icons-png.flaticon.com/512/2040/2040946.png" alt="Smarty">
-</div>
+    chatInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
