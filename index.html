@@ -1,864 +1,11 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-78XYHRV60T"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-78XYHRV60T');
-</script>
- 
  <link rel="icon" type="image/png" href="favi.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>סדר ותהליכים לעסקים קטנים | קישור מערכות ודשבורדים מותאמים אישית</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;600;700&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Noto Sans Hebrew', sans-serif;
-      direction: rtl;
-      line-height: 1.7;
-      color: #1a1a1a;
-      background: #ffffff;
-      font-weight: 300;
-      font-size: 18px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .hero .container {
-      max-width: 1600px;
-    }
-
-    section {
-      padding: 60px 0;
-    }
-
-    h1, h2, h3 {
-      font-weight: 400;
-      margin-bottom: 1rem;
-    }
-
-    h1 {
-      font-size: 3rem;
-      line-height: 1.15;
-    }
-
-    h2 {
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    h3 {
-      font-size: 1.3rem;
-    }
-
-    /* Hero Section */
-    .hero {
-      background: #f8f8f8;
-      color: #1a1a1a;
-      text-align: center;
-      padding: 40px 0;
-      min-height: 500px;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero-content {
-      background: white;
-      padding: 40px;
-      border-radius: 12px;
-      border: 1px solid #e0e0e0;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .hero-content:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-    }
-
-    /* Site logo in hero */
-    .site-logo {
-      display: block;
-      margin: 0 auto 20px;
-      max-width: 280px;
-      height: auto;
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.10));
-    }
-
-    .hero-video {
-      width: 100%;
-      max-width: 860px;
-      height: auto;
-      max-height: 320px;
-      object-fit: cover;
-      margin: 0 auto;
-      border-radius: 14px;
-      box-shadow: 0 14px 50px rgba(0,0,0,0.12);
-      border: 2px solid #e0e0e0;
-      display: block;
-    }
-
-    @media (max-width: 768px) {
-      .hero-video {
-        max-width: 100%;
-      }
-    }
-
-    .hero h1 {
-      margin-bottom: 1.5rem;
-    }
-
-    .tagline {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      opacity: 0.95;
-      font-weight: 400;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 16px 40px;
-      background: #28a745;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 400;
-      font-size: 1.1rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-      margin-bottom: 2rem;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      background: #1e7a34;
-    }
-
-    /* For Who Section */
-    .for-who {
-      background: #f8f8f8;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 2rem;
-    }
-
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: 1px solid #e0e0e0;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    .icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .card h3 {
-      margin-bottom: 0.8rem;
-    }
-
-    .card p {
-      color: #666;
-    }
-
-    /* Process Section */
-    .process {
-      background: white;
-    }
-
-    .timeline {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 3rem;
-    }
-
-    .step {
-      text-align: center;
-      padding: 20px;
-    }
-
-    .step-number {
-      width: 60px;
-      height: 60px;
-      background: #2c5aa0;
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      font-weight: 400;
-      margin: 0 auto 1.5rem;
-    }
-
-    .step h3 {
-      margin-bottom: 0.8rem;
-    }
-
-    .step p {
-      color: #666;
-    }
-
-    /* Pricing Section */
-    .pricing {
-      background: #f8f8f8;
-    }
-
-    .pricing-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 2rem;
-    }
-
-    .pricing-card {
-      background: white;
-      padding: 35px;
-      border-radius: 12px;
-      text-align: center;
-      border: 2px solid #e0e0e0;
-      position: relative;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .pricing-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    .pricing-card.featured {
-      border-color: #2c5aa0;
-      transform: scale(1.05);
-    }
-
-    .pricing-card.featured:hover {
-      transform: scale(1.08) translateY(-5px);
-    }
-
-    .badge {
-      position: absolute;
-      top: -12px;
-      right: 20px;
-      background: #2c5aa0;
-      color: white;
-      padding: 5px 15px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 400;
-    }
-
-    .pricing-card h3 {
-      margin-bottom: 1rem;
-    }
-
-    .price {
-      font-size: 2rem;
-      font-weight: 400;
-      margin: 1.5rem 0;
-    }
-
-    .pricing-card ul {
-      list-style: none;
-      text-align: right;
-      margin-top: 1.5rem;
-    }
-
-    .pricing-card li {
-      padding: 10px 0;
-      border-bottom: 1px solid #f0f0f0;
-    }
-
-    .pricing-card li:last-child {
-      border-bottom: none;
-    }
-
-    .pricing-note {
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 1.1rem;
-      color: #666;
-    }
-
-    /* Mistakes Section */
-    .mistakes {
-      background: white;
-    }
-
-    .mistake-list {
-      margin: 0 auto;
-    }
-
-    .mistake-item {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 30px;
-      padding: 25px;
-      background: #f8f8f8;
-      border-radius: 12px;
-      align-items: flex-start;
-    }
-
-    .mistake-icon {
-      font-size: 2.5rem;
-      flex-shrink: 0;
-    }
-
-    .mistake-content h3 {
-      margin-bottom: 0.5rem;
-    }
-
-    .mistake-content p {
-      color: #666;
-    }
-
-    /* Solution Section */
-    .solution {
-      background: #f8f8f8;
-    }
-
-    .solution-points {
-      margin: 2rem auto 0;
-    }
-
-    .point {
-      display: flex;
-      align-items: flex-start;
-      gap: 15px;
-      margin-bottom: 20px;
-      padding: 20px;
-      background: white;
-      border-radius: 8px;
-    }
-
-    .checkmark {
-      color: #28a745;
-      font-size: 1.5rem;
-      font-weight: 400;
-      flex-shrink: 0;
-    }
-
-    .point p {
-      font-size: 1.1rem;
-    }
-
-    /* Contact Section */
-    .contact {
-      background: linear-gradient(135deg, #28a745 0%, #1e7a34 100%);
-      color: white;
-      text-align: center;
-      padding: 80px 0;
-    }
-
-    .contact h2 {
-      color: white;
-    }
-
-    .contact-text {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      opacity: 0.95;
-    }
-
-    .contact-methods {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .contact-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 16px 30px;
-      background: white;
-      color: #1a1a1a;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 400;
-      font-size: 1.1rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .contact-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-
-    .contact-button.whatsapp {
-      background: #25D366;
-      color: white;
-    }
-
-    .contact-button.whatsapp:hover {
-      background: #20ba5a;
-    }
-
-    .contact-button.calendar {
-      background: #ff6b35;
-      color: white;
-    }
-
-    .contact-button.calendar:hover {
-      background: #e55a2b;
-    }
-
-    .contact-button.phone {
-      background: #007bff;
-      color: white;
-    }
-
-    .contact-button.phone:hover {
-      background: #0056b3;
-    }
-
-    /* Contact Form */
-    .contact-form-wrapper {
-      margin: 50px auto 0;
-      text-align: center;
-    }
-
-    .contact-form-wrapper h3 {
-      color: white;
-      margin-bottom: 2rem;
-      font-size: 1.3rem;
-    }
-
-    .contact-form {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 30px;
-      border-radius: 12px;
-      backdrop-filter: blur(10px);
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 15px;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.9);
-      font-family: 'Noto Sans Hebrew', sans-serif;
-      font-size: 1rem;
-      transition: border-color 0.3s;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: white;
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    .submit-button {
-      width: 100%;
-      padding: 16px;
-      background: white;
-      color: #28a745;
-      border: none;
-      border-radius: 8px;
-      font-family: 'Noto Sans Hebrew', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 400;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .submit-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-
-    /* Audio Section */
-    .audio-section {
-      background: white;
-      padding: 60px 0;
-    }
-
-    .audio-wrapper {
-      margin: 2rem auto 0;
-    }
-
-    /* Footer */
-    footer {
-      background: #1e3a6b;
-      color: white;
-      text-align: center;
-      padding: 30px 0;
-    }
-
-    footer p {
-      opacity: 0.8;
-    }
-
-    /* Chat Widget Styles */
-    .chat-bubble {
-      position: fixed;
-      bottom: 22px;
-      right: 22px;
-      width: 72px;
-      height: 72px;
-      background: linear-gradient(135deg, #2c5aa0 0%, #1e3a6b 100%);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.32);
-      transition: transform 0.2s, box-shadow 0.2s;
-      z-index: 1000;
-    }
-
-    .chat-bubble:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
-    }
-
-    .chat-bubble-tooltip {
-      position: absolute;
-      bottom: 70px;
-      right: 0;
-      background: white;
-      color: #1a1a1a;
-      padding: 10px 15px;
-      border-radius: 8px;
-      font-size: 14px;
-      white-space: nowrap;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      opacity: 1;
-      pointer-events: auto;
-      transition: opacity 0.3s, transform 0.3s;
-      transform: translateY(0);
-      direction: rtl;
-      border: 1px solid #e0e0e0;
-    }
-
-    .chat-bubble-tooltip::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      right: 20px;
-      width: 12px;
-      height: 12px;
-      background: white;
-      transform: rotate(45deg);
-      border-right: 1px solid #e0e0e0;
-      border-bottom: 1px solid #e0e0e0;
-    }
-
-    .chat-widget {
-      position: fixed;
-      bottom: 96px;
-      right: 24px;
-      width: 460px;
-      height: 620px;
-      background: white;
-      border-radius: 14px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.34);
-      display: none;
-      flex-direction: column;
-      z-index: 999;
-      border: 2px solid #1e3a6b;
-    }
-
-    .chat-widget.open {
-      display: flex;
-    }
-
-    .chat-header {
-      background: linear-gradient(135deg, #2c5aa0 0%, #1e3a6b 100%);
-      padding: 15px;
-      border-radius: 10px 10px 0 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-    }
-
-    .chat-logo {
-      width: 100%;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      text-align: center;
-      color: white;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .close-chat {
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-      padding: 0;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-      position: relative;
-      transition: opacity 0.2s;
-    }
-
-    .close-chat:hover {
-      opacity: 0.8;
-    }
-
-    .chat-messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px;
-      background: #f8f8f8;
-      direction: rtl;
-    }
-
-    .bot-message,
-    .user-message {
-      margin-bottom: 15px;
-      display: flex;
-      direction: rtl;
-    }
-
-    .user-message {
-      justify-content: flex-start;
-    }
-
-    .bot-message {
-      justify-content: flex-end;
-    }
-
-    .message-bubble {
-      max-width: 75%;
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-size: 14px;
-      line-height: 1.4;
-      word-wrap: break-word;
-      direction: rtl;
-      text-align: right;
-    }
-
-    .message-bubble.bot {
-      background: #2c5aa0;
-      color: white;
-      border-bottom-right-radius: 4px;
-    }
-
-    .message-bubble.user {
-      background: white;
-      color: #1a1a1a;
-      border-bottom-left-radius: 4px;
-      border: 1px solid #e0e0e0;
-    }
-
-    .chat-input-wrapper {
-      display: flex;
-      padding: 15px;
-      background: white;
-      border-top: 1px solid #e0e0e0;
-      border-radius: 0 0 10px 10px;
-      direction: rtl;
-    }
-
-    .chat-input {
-      flex: 1;
-      border: 1px solid #e0e0e0;
-      border-radius: 20px;
-      padding: 10px 15px;
-      font-family: 'Noto Sans Hebrew', sans-serif;
-      font-size: 14px;
-      outline: none;
-      transition: border-color 0.2s;
-      direction: rtl;
-      text-align: right;
-    }
-
-    .chat-input:focus {
-      border-color: #2c5aa0;
-    }
-
-    .send-button {
-      background: #2c5aa0;
-      border: none;
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      margin-right: 10px;
-      transition: background 0.2s;
-      flex-shrink: 0;
-    }
-
-    .send-button:hover {
-      background: #1e3a6b;
-    }
-
-    .send-button:disabled {
-      background: #ccc;
-      cursor: not-allowed;
-    }
-
-    .typing-indicator {
-      display: flex;
-      gap: 4px;
-      padding: 12px 16px;
-      background: #2c5aa0;
-      border-radius: 12px;
-      width: fit-content;
-      margin-right: auto;
-    }
-
-    .typing-indicator span {
-      width: 8px;
-      height: 8px;
-      background: white;
-      border-radius: 50%;
-      animation: typing 1.4s infinite;
-    }
-
-    .typing-indicator span:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .typing-indicator span:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-
-    @keyframes typing {
-      0%, 60%, 100% {
-        opacity: 0.3;
-        transform: translateY(0);
-      }
-      30% {
-        opacity: 1;
-        transform: translateY(-4px);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .chat-widget {
-        width: calc(100vw - 40px);
-        height: calc(100vh - 140px);
-        bottom: 90px;
-        right: 20px;
-        left: 20px;
-      }
-      
-      .chat-bubble {
-        bottom: 22px;
-        right: 22px;
-        width: 64px;
-        height: 64px;
-      }
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2.2rem;
-      }
-      
-      h2 {
-        font-size: 1.6rem;
-      }
-      
-      .hero {
-        padding: 30px 0;
-        min-height: 420px;
-      }
-
-      .hero-content {
-        padding: 25px;
-      }
-      
-      .tagline {
-        font-size: 1rem;
-      }
-      
-      section {
-        padding: 40px 0;
-      }
-      
-      .cards, .timeline, .pricing-cards {
-        grid-template-columns: 1fr;
-      }
-      
-      .pricing-card.featured {
-        transform: scale(1);
-      }
-      
-      .pricing-card.featured:hover {
-        transform: translateY(-5px);
-      }
-      
-      .contact-methods {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .contact-button {
-        width: 100%;
-        max-width: 300px;
-      }
-      
-      .contact-form {
-        padding: 20px;
-      }
-      
-      .contact-form-wrapper h3 {
-        font-size: 1.1rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- Hero Section -->
@@ -879,26 +26,92 @@
     </div>
   </section>
 
-  <!-- Who is this for -->
-  <section class="for-who">
+  <!-- AI Samples (replaces 'למי זה מתאים?') -->
+  <section class="ai-samples" aria-label="דוגמאות לשימוש" dir="rtl">
     <div class="container">
-      <h2>למי זה מתאים?</h2>
-      <div class="cards">
-        <div class="card">
-          <div class="icon">👤</div>
-          <h3>עצמאים ויועצים</h3>
-          <p>תהליך עבודה ברור מליד ועד סגירה, דשבורד שמראה מה קורה</p>
-        </div>
-        <div class="card">
-          <div class="icon">🏪</div>
-          <h3>עסקים עם מערכות לא מחוברות</h3>
-          <p>שרוצים חיבור בין המערכות ותהליכים אוטומטיים</p>
-        </div>
-        <div class="card">
-          <div class="icon">🔧</div>
-          <h3>נותני שירותים</h3>
-          <p>קליניקות, מוסכים, אנשי מקצוע - דשבורד אחד לכל העסק</p>
-        </div>
+      <h2>דוגמאות לשימוש</h2>
+      <div class="samples-grid">
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <!-- headset icon -->
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3C7.03 3 3 7.03 3 12v3a3 3 0 0 0 3 3h.5a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H6a6 6 0 0 1 12 0h-1.5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1H18a3 3 0 0 0 3-3v-3c0-4.97-4.03-9-9-9z" fill="#fff"/>
+            </svg>
+          </div>
+          <h3>נציג תמיכת לקוחות AI</h3>
+          <p>מענה חכם ומהיר 24/7 לכל שאלות הלקוחות שלכם.</p>
+        </article>
+
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <!-- sales agent icon -->
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-7 8a6 6 0 0 1 14 0H5z" fill="#fff"/>
+            </svg>
+          </div>
+          <h3>סוכן מכירות אוטונומי</h3>
+          <p>ניהול לידים וסגירת עסקאות מסביב לשעון בלי לפספס אף פנייה.</p>
+        </article>
+
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <!-- receipt icon -->
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 2h10v20l-3-2-3 2-3-2-1 1V2z" fill="#fff"/>
+            </svg>
+          </div>
+          <h3>דיווח הוצאות אוטומטי</h3>
+          <p>סריקה, שמירה ודיווח הוצאות בלחיצת כפתור – בלי ניירת מיותרת.</p>
+        </article>
+
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;">💬</div>
+          </div>
+          <h3>הגברת מעורבות לקוחות</h3>
+          <p>יצירת קשר אישי ואוטומטי ששומר על המותג שלכם בראש התודעה.</p>
+        </article>
+
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;">📣</div>
+          </div>
+          <h3>ניהול רשתות חברתיות</h3>
+          <p>פרסום תכנים אוטומטי בכל הפלטפורמות בו-זמנית ובמינימום מאמץ.</p>
+        </article>
+
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;">✉️</div>
+          </div>
+          <h3>אוטומציית אימייל חכמה</h3>
+          <p>שליחת ניוזלטרים ורצפי הודעות מותאמים אישית לכל שלב במסע הלקוח.</p>
+        </article>
+
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;">📦</div>
+          </div>
+          <h3>עדכוני מלאי בזמן אמת</h3>
+          <p>עדכון אוטומטי ללקוחות על מוצרים שאזלו אצלהם במלאי והם צריכים לחדש מלאי.</p>
+        </article>
+
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;">⚙️</div>
+          </div>
+          <h3>אוטומציה בהתאמה אישית</h3>
+          <p>כל תהליך עסקי שתרצו לייעל – אנחנו נהפוך אותו לאוטומטי.</p>
+        </article>
+
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;">📊</div>
+          </div>
+          <h3>שליטה על מכשירים מרחוק לפי הגיון</h3>
+          <p>הפעלת קירור/חימום/אזעקה קולית וכו׳</p>
+        </article>
+
       </div>
     </div>
   </section>
@@ -973,42 +186,7 @@
     </div>
   </section>
 
-  <!-- Common Mistakes -->
-  <section class="mistakes">
-    <div class="container">
-      <h2>הטעויות הנפוצות בניהול עסק</h2>
-      <div class="mistake-list">
-        <div class="mistake-item">
-          <div class="mistake-icon">📊</div>
-          <div class="mistake-content">
-            <h3>אקסל שהפך לסיוט</h3>
-            <p>טבלאות ענקיות, גרסאות מרובות, מידע מפוזר. אף אחד לא באמת יודע מה הסטטוס של כל לקוח.</p>
-          </div>
-        </div>
-        <div class="mistake-item">
-          <div class="mistake-icon">💬</div>
-          <div class="mistake-content">
-            <h3>פניות שנופלות בין הכיסאות</h3>
-            <p>לקוח שלח הודעה בווטסאפ, מישהו ענה במייל, ואף אחד לא זכר לעקוב. ההזדמנות הלכה לאיבוד.</p>
-          </div>
-        </div>
-        <div class="mistake-item">
-          <div class="mistake-icon">🔄</div>
-          <div class="mistake-content">
-            <h3>אין תהליך עבודה מוגדר</h3>
-            <p>כל אחד עובד אחרת, אין סטנדרטים ברורים, וקשה לדעת מה באמת קורה בעסק.</p>
-          </div>
-        </div>
-        <div class="mistake-item">
-          <div class="mistake-icon">🎯</div>
-          <div class="mistake-content">
-            <h3>אין תמונת מצב מרוכזת</h3>
-            <p>המידע מפוזר בין מערכות, אין דשבורד אחד שמראה מה באמת קורה, קשה לקבל החלטות.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
 
   <!-- Solution -->
   <section class="solution">
@@ -1086,8 +264,39 @@
 
 
   <footer>
-    <div class="container">
-      <p>&copy; 2024 CRM פשוט לעסקים קטנים | ניהול לקוחות חכם ונגיש</p>
+    <div class="container footer-inner">
+      <p>&copy; 2026 CRM פשוט לעסקים קטנים | ניהול לקוחות חכם ונגיש</p>
+      <nav class="social-links" aria-label="קישורים חברתיים">
+        <a href="https://www.linkedin.com/company/smartesek" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg class="social-icon" width="18" height="18" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" aria-hidden="false">
+            <rect width="24" height="24" rx="3" fill="#0A66C2"></rect>
+            <path d="M6.94 9.5h2.5v8.5h-2.5v-8.5zm1.26-4.5a1.45 1.45 0 1 1 0 2.9 1.45 1.45 0 0 1 0-2.9zM11.6 9.5h2.4v1.16c.34-.62 1.2-1.36 2.62-1.36 2.8 0 3.32 1.84 3.32 4.23v4.47h-2.5v-3.96c0-.95-.02-2.17-1.32-2.17-1.32 0-1.52 1.03-1.52 2.09v4.04h-2.5v-8.34z" fill="#fff"/>
+          </svg>
+          <span style="margin-inline-start:8px;">LinkedIn</span>
+        </a>
+        <a href="https://www.facebook.com/smartesek" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg class="social-icon" width="18" height="18" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" aria-hidden="false">
+            <rect width="24" height="24" rx="3" fill="#1877F2"></rect>
+            <path d="M15.12 8.5h-1.52c-.3 0-.72.16-.72.8v1h2.24l-.28 2.19h-1.96V20h-2.36v-7.51H9.6v-2.19h1.24V9.48c0-1.83 1.08-3.03 2.73-3.03.79 0 1.64.14 1.83.15v2.9z" fill="#fff"/>
+          </svg>
+          <span style="margin-inline-start:8px;">Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/smartesek/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg class="social-icon" width="18" height="18" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" aria-hidden="false">
+            <defs>
+              <linearGradient id="ig-grad" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#f58529"/>
+                <stop offset="50%" stop-color="#dd2a7b"/>
+                <stop offset="100%" stop-color="#515bd4"/>
+              </linearGradient>
+            </defs>
+            <rect width="24" height="24" rx="5" fill="url(#ig-grad)"></rect>
+            <path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.75a3.05 3.05 0 1 1 0-6.1 3.05 3.05 0 0 1 0 6.1z" fill="#fff"/>
+            <circle cx="17.5" cy="6.5" r="0.9" fill="#fff"/>
+          </svg>
+          <span style="margin-inline-start:8px;">Instagram</span>
+        </a>
+      </nav>
     </div>
   </footer>
 
@@ -1128,153 +337,6 @@
     </div>
   </div>
 
-  <script>
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
-    // Add fade-in animation on scroll
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-
-    // Observe all sections and cards
-    document.querySelectorAll('section, .card, .pricing-card, .mistake-item, .point').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
-    });
-
-    // Hero section should appear immediately
-    document.querySelector('.hero').style.opacity = '1';
-    document.querySelector('.hero').style.transform = 'translateY(0)';
-
-    // Chat Widget Functionality
-    const chatBubble = document.getElementById('chat-bubble');
-    const chatWidget = document.getElementById('chat-widget');
-    const closeChat = document.getElementById('close-chat');
-    const chatInput = document.getElementById('chat-input');
-    const sendButton = document.getElementById('send-message');
-    const chatMessages = document.getElementById('chat-messages');
-    const CHAT_URL = 'https://n8n.srv1239769.hstgr.cloud/webhook/ffcf29b6-19e9-40fd-81a6-132910560043/chat';
-
-    let sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-
-    chatBubble.addEventListener('click', () => {
-      chatWidget.classList.add('open');
-      chatBubble.style.display = 'none';
-      chatInput.focus();
-    });
-
-    closeChat.addEventListener('click', () => {
-      chatWidget.classList.remove('open');
-      chatBubble.style.display = 'flex';
-    });
-
-    function addMessage(text, isBot = false) {
-      const messageDiv = document.createElement('div');
-      messageDiv.className = isBot ? 'bot-message' : 'user-message';
-      
-      const bubble = document.createElement('div');
-      bubble.className = `message-bubble ${isBot ? 'bot' : 'user'}`;
-      bubble.textContent = text;
-      
-      messageDiv.appendChild(bubble);
-      chatMessages.appendChild(messageDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function showTypingIndicator() {
-      const typingDiv = document.createElement('div');
-      typingDiv.className = 'bot-message typing-message';
-      typingDiv.innerHTML = `
-        <div class="typing-indicator">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      `;
-      chatMessages.appendChild(typingDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      return typingDiv;
-    }
-
-    function removeTypingIndicator(indicator) {
-      if (indicator && indicator.parentNode) {
-        indicator.parentNode.removeChild(indicator);
-      }
-    }
-
-    async function sendMessage() {
-      const message = chatInput.value.trim();
-      if (!message) return;
-
-      addMessage(message, false);
-      chatInput.value = '';
-      sendButton.disabled = true;
-
-      const typingIndicator = showTypingIndicator();
-
-      try {
-        const response = await fetch(CHAT_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            action: 'sendMessage',
-            sessionId: sessionId,
-            chatInput: message
-          })
-        });
-
-        const data = await response.json();
-        removeTypingIndicator(typingIndicator);
-        
-        if (data.output) {
-          addMessage(data.output, true);
-        } else {
-          addMessage('מצטער, אירעה שגיאה. נסה שוב.', true);
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        removeTypingIndicator(typingIndicator);
-        addMessage('מצטער, אירעה שגיאה בחיבור. נסה שוב.', true);
-      } finally {
-        sendButton.disabled = false;
-        chatInput.focus();
-      }
-    }
-
-    sendButton.addEventListener('click', sendMessage);
-
-    chatInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        sendMessage();
-      }
-    });
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
-
