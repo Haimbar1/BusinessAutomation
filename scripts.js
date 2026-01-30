@@ -1,244 +1,422 @@
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
-
-// Add fade-in animation on scroll
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, observerOptions);
-
-// Observe all sections and cards (include AI gallery cards)
-document.querySelectorAll('section, .card, .pricing-card, .ai-card, .point').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-  observer.observe(el);
-});
-
-// Hero section should appear immediately
-document.querySelector('.hero').style.opacity = '1';
-document.querySelector('.hero').style.transform = 'translateY(0)';
-
-// Chat Widget Functionality (main)
-const chatBubble = document.getElementById('chat-bubble');
-const chatWidget = document.getElementById('chat-widget');
-const closeChat = document.getElementById('close-chat');
-const chatInput = document.getElementById('chat-input');
-const sendButton = document.getElementById('send-message');
-const chatMessages = document.getElementById('chat-messages');
-const CHAT_URL = 'https://n8n.srv1239769.hstgr.cloud/webhook/ffcf29b6-19e9-40fd-81a6-132910560043/chat';
-
-let sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-
-chatBubble.addEventListener('click', () => {
-  chatWidget.classList.add('open');
-  chatBubble.style.display = 'none';
-  chatInput.focus();
-});
-
-closeChat.addEventListener('click', () => {
-  chatWidget.classList.remove('open');
-  chatBubble.style.display = 'flex';
-});
-
-function addMessageTo(container, text, isBot = false) {
-  const messageDiv = document.createElement('div');
-  messageDiv.className = isBot ? 'bot-message' : 'user-message';
-  
-  const bubble = document.createElement('div');
-  bubble.className = `message-bubble ${isBot ? 'bot' : 'user'}`;
-  bubble.textContent = text;
-  
-  messageDiv.appendChild(bubble);
-  container.appendChild(messageDiv);
-  container.scrollTop = container.scrollHeight;
-}
-
-function showTypingIndicatorIn(container) {
-  const typingDiv = document.createElement('div');
-  typingDiv.className = 'bot-message typing-message';
-  typingDiv.innerHTML = `
-    <div class="typing-indicator">
-      <span></span>
-      <span></span>
-      <span></span>
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+ <link rel="icon" type="image/png" href="favi.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>סדר ותהליכים לעסקים קטנים | קישור מערכות ודשבורדים מותאמים אישית</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <img src="https://www.smartesek.com/Smart%20Esek%20logo.png" alt="SMART ESEK" class="site-logo" />
+        <div style="margin-bottom: 3rem;">
+          <video class="hero-video" autoplay muted loop playsinline>
+            <source src="BusinessAutomation.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <h1>סדר ואוטומציה בעסק שלך</h1>
+       <p class="tagline">אוטומציה, חיבור ושליטה – כל העסק במקום אחד, חוסכים בעבודה ידנית ונהנים ממחיר חודשי נמוך וקבוע ללא הפתעות.</p>
+        <a href="#contact" class="cta-button">בואו נדבר</a>
+      </div>
     </div>
-  `;
-  container.appendChild(typingDiv);
-  container.scrollTop = container.scrollHeight;
-  return typingDiv;
-}
+  </section>
 
-function removeTypingIndicator(indicator) {
-  if (indicator && indicator.parentNode) {
-    indicator.parentNode.removeChild(indicator);
-  }
-}
+  <!-- AI Samples (replaces 'למי זה מתאים?') -->
+  <section class="ai-samples" aria-label="דוגמאות לשימוש" dir="rtl">
+    <div class="container">
+      <h2>דוגמאות לשימוש</h2>
+      <div class="samples-grid">
+        <article class="sample-card clickable-agent" tabindex="0" role="button" aria-pressed="false" data-agent="support">
+          <div class="sample-icon" aria-hidden="true">
+            <!-- headset icon -->
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3C7.03 3 3 7.03 3 12v3a3 3 0 0 0 3 3h.5a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H6a6 6 0 0 1 12 0h-1.5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1H18a3 3 0 0 0 3-3v-3c0-4.97-4.03-9-9-9z" fill="#fff"/>
+            </svg>
+          </div>
+          <h3>נציג תמיכת לקוחות AI</h3>
+          <p>מענה חכם ומהיר 24/7 לכל שאלות הלקוחות שלכם.</p>
+        </article>
 
-async function sendMessage() {
-  const message = chatInput.value.trim();
-  if (!message) return;
+        <article class="sample-card clickable-agent" tabindex="0" role="button" aria-pressed="false" data-agent="sales">
+          <div class="sample-icon" aria-hidden="true">
+            <!-- robot head icon (same as chat bubble) -->
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Robot head -->
+              <rect x="6" y="7" width="12" height="10" rx="2" fill="#ffffff"/>
+              <!-- Antenna -->
+              <circle cx="12" cy="4" r="1" fill="#ffffff"/>
+              <line x1="12" y1="5" x2="12" y2="7" stroke="#ffffff" stroke-width="1.5"/>
+              <!-- Eyes -->
+              <circle cx="9" cy="11" r="1.5" fill="#2c5aa0"/>
+              <circle cx="15" cy="11" r="1.5" fill="#2c5aa0"/>
+              <!-- Mouth -->
+              <rect x="9" y="14" width="6" height="1.5" rx="0.5" fill="#2c5aa0"/>
+            </svg>
+          </div>
+          <h3>סוכן מכירות אוטונומי</h3>
+          <p>ניהול לידים וסגירת עסקאות מסביב לשעון בלי לפספס אף פנייה.</p>
+        </article>
 
-  addMessageTo(chatMessages, message, false);
-  chatInput.value = '';
-  sendButton.disabled = true;
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <!-- receipt icon -->
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 2h10v20l-3-2-3 2-3-2-1 1V2z" fill="#fff"/>
+            </svg>
+          </div>
+          <h3>דיווח הוצאות אוטומטי</h3>
+          <p>סריקה, שמירה ודיווח הוצאות בלחיצת כפתור – בלי ניירת מיותרת.</p>
+        </article>
 
-  const typingIndicator = showTypingIndicatorIn(chatMessages);
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <!-- white speech bubble on green background -->
+            <svg width="56" height="56" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+              <rect width="24" height="24" rx="6" fill="#28a745"/>
+              <path d="M6 9.5c0-2.2 2.7-4 6-4s6 1.8 6 4-2.7 4-6 4c-.8 0-1.6-.1-2.3-.4L6 16l1.3-2.6C6.5 12.8 6 11.3 6 9.5z" fill="#ffffff"/>
+            </svg>
+          </div>
+          <h3>הגברת מעורבות לקוחות</h3>
+          <p>יצירת קשר אישי ואוטומטי ששומר על המותג שלכם בראש התודעה.</p>
+        </article>
 
-  try {
-    const response = await fetch(CHAT_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        action: 'sendMessage',
-        sessionId: sessionId,
-        chatInput: message
-      })
-    });
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <div>📣</div>
+          </div>
+          <h3>ניהול רשתות חברתיות</h3>
+          <p>פרסום תכנים אוטומטי בכל הפלטפורמות בו-זמנית ובמינימום מאמץ.</p>
+        </article>
 
-    const data = await response.json();
-    removeTypingIndicator(typingIndicator);
-    
-    if (data.output) {
-      addMessageTo(chatMessages, data.output, true);
-    } else {
-      addMessageTo(chatMessages, 'מצטער, אירעה שגיאה. נסה שוב.', true);
-    }
-  } catch (error) {
-    console.error('Error:', error);
-    removeTypingIndicator(typingIndicator);
-    addMessageTo(chatMessages, 'מצטער, אירעה שגיאה בחיבור. נסה שוב.', true);
-  } finally {
-    sendButton.disabled = false;
-    chatInput.focus();
-  }
-}
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <div>✉️</div>
+          </div>
+          <h3>אוטומציית אימייל חכמה</h3>
+          <p>שליחת ניוזלטרים ורצפי הודעות מותאמים אישית לכל שלב במסע הלקוח.</p>
+        </article>
 
-sendButton.addEventListener('click', sendMessage);
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <div>📦</div>
+          </div>
+          <h3>עדכוני מלאי בזמן אמת</h3>
+          <p>עדכון אוטומטי ללקוחות על מוצרים שאזלו אצלהם במלאי והם צריכים לחדש מלאי.</p>
+        </article>
 
-chatInput.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') {
-    sendMessage();
-  }
-});
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <div>⚙️</div>
+          </div>
+          <h3>אוטומציה בהתאמה אישית</h3>
+          <p>כל תהליך עסקי שתרצו לייעל – אנחנו נהפוך אותו לאוטומטי.</p>
+        </article>
 
-// -------------------------
-// Support Agent Widget (left-bottom) - duplicated functionality but separate elements & URL
-const chatBubbleSupport = document.getElementById('chat-bubble-support');
-const chatWidgetSupport = document.getElementById('chat-widget-support');
-const closeChatSupport = document.getElementById('close-chat-support');
-const chatInputSupport = document.getElementById('chat-input-support');
-const sendButtonSupport = document.getElementById('send-message-support');
-const chatMessagesSupport = document.getElementById('chat-messages-support');
-// new webhook URL provided by you
-const SUPPORT_CHAT_URL = 'https://n8n.srv1239769.hstgr.cloud/webhook/543b5127-33dc-4e0f-b658-8643d404506b/chat';
+        <article class="sample-card" tabindex="0">
+          <div class="sample-icon" aria-hidden="true">
+            <div>📊</div>
+          </div>
+          <h3>שליטה על מכשירים מרחוק לפי הגיון</h3>
+          <p>הפעלת קירור/חימום/אזעקה קולית וכו׳</p>
+        </article>
 
-let supportSessionId = 'support_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+      </div>
+    </div>
+  </section>
 
-chatBubbleSupport.addEventListener('click', () => {
-  chatWidgetSupport.classList.add('open');
-  chatBubbleSupport.style.display = 'none';
-  chatInputSupport.focus();
-});
+  <!-- Process -->
+  <section class="process">
+    <div class="container">
+      <h2>איך זה עובד?</h2>
+      <div class="timeline">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>מיפוי תהליכים</h3>
+          <p>הבנת התהליכים הקיימים, איפה המידע, מה חסר</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>חיבור מערכות</h3>
+          <p>קישור בין כלי העבודה שלך + בניית דשבורד מרכזי</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>הגדרת תהליכים</h3>
+          <p>תהליכים ברורים לצוות, אוטומציות, מדריכי עבודה</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>ליווי והטמעה</h3>
+          <p>הכשרת הצוות, חודש ליווי, תמיכה שוטפת</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-closeChatSupport.addEventListener('click', () => {
-  chatWidgetSupport.classList.remove('open');
-  chatBubbleSupport.style.display = 'flex';
-});
+  <!-- Pricing -->
+  <section class="pricing">
+    <div class="container">
+      <h2>תמחור שקוף</h2>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>חבילה בסיסית</h3>
+          <div class="price">החל מ-₪1,500</div>
+          <ul>
+            <li>מיפוי תהליכים</li>
+            <li>הגדרת תהליכים פנימיים</li>
+            <li>דשבורד בסיסי</li>
+            <li>הדרכה + מדריך</li>
+          </ul>
+        </div>
+        <div class="pricing-card featured">
+          <div class="badge">מומלץ</div>
+          <h3>חבילה מלאה</h3>
+          <div class="price">החל מ-₪2,200</div>
+          <ul>
+            <li>מיפוי מעמיק</li>
+            <li>חיבור כל המערכות</li>
+            <li>דשבורד מותאם אישית</li>
+            <li>אוטומציות מתקדמות</li>
+            <li>חודש ליווי + 10 שעות</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <h3>ליווי שוטף</h3>
+          <div class="price">₪400/חודש</div>
+          <ul>
+            <li>איחסון</li>
+            <li>תמיכה בתקלות</li>
+            <li>עדכונים שוטפים</li>
+          </ul>
+        </div>
+      </div>
+      <p class="pricing-note">💡 תשלום חד-פעמי על ההקמה + עלות חודשית מינימלית לתפעול המערכות</p>
+    </div>
+  </section>
 
-async function sendMessageSupport() {
-  const message = chatInputSupport.value.trim();
-  if (!message) return;
 
-  addMessageTo(chatMessagesSupport, message, false);
-  chatInputSupport.value = '';
-  sendButtonSupport.disabled = true;
 
-  const typingIndicator = showTypingIndicatorIn(chatMessagesSupport);
+  <!-- Solution -->
+  <section class="solution">
+    <div class="container">
+      <h2>הפתרון? תהליכים אוטומטיים + מערכות מחוברות + סוכני AI</h2>
+      <div class="solution-points">
+        <div class="point">
+          <span class="checkmark">✓</span>
+          <p><strong>חיבור מערכות:</strong> כל הכלים שלך מדברים ביניהם, המידע זורם אוטומטית</p>
+        </div>
+        <div class="point">
+          <span class="checkmark">✓</span>
+          <p><strong>תהליכים ברורים:</strong> כל אחד יודע מה לעשות ואיך, עם הנחיות ברורות</p>
+        </div>
+        <div class="point">
+          <span class="checkmark">✓</span>
+          <p><strong>אוטומציות חכמות:</strong> המרות, שימור וגידול - כל פעולה קורית אוטומטית לפי חוקיות מוגדרות, כמעט ללא מגע יד אדם</p>
+        </div>
+        <div class="point">
+          <span class="checkmark">✓</span>
+          <p><strong>דשבורד מרכזי:</strong> תמונה מלאה של העסק במקום אחד, החלטות מבוססות נתונים</p>
+        </div>
+        <div class="point">
+          <span class="checkmark">✓</span>
+          <p><strong>עלות חודשית מינימלית:</strong> תשלום חד-פעמי על ההקמה, בלי מנויים יקרים - רק עלויות תפעול מינימליות</p>
+        </div>
+        <div class="point">
+          <span class="checkmark">✓</span>
+          <p><strong>ליווי צמוד:</strong> לא משאירים אותך לבד, תמיכה עד הטמעה מלאה</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  try {
-    const response = await fetch(SUPPORT_CHAT_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        action: 'sendMessage',
-        sessionId: supportSessionId,
-        chatInput: message
-      })
-    });
+  <!-- Presentation Section -->
+  <section style="background: #f8f8f8; padding: 60px 0; text-align: center;">
+    <div class="container">
+      <iframe src="https://gamma.app/embed/0ogcn3q77qyxtz9" style="width: 100%; max-width: 100%; height: 450px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" allow="fullscreen" title="Untitled"></iframe>
+    </div>
+  </section>
+  
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>בואו נסדר את העסק שלכם</h2>
+      <p class="contact-text">פגישת ייעוץ ראשונית חינם - נבין את הצרכים ונראה איך אפשר לעזור</p>
+      
+      <div class="contact-methods">
+        <a href="https://wa.me/972547866119?text=היי, אשמח לשמוע עוד על הסדרת תהליכים ודשבורד לעסק שלי" target="_blank" class="contact-button whatsapp">
+          <span class="icon">💬</span>
+          שלח הודעה בוואטסאפ
+        </a>
+        <a href="https://cal.com/haimbar" target="_blank" class="contact-button calendar">
+          <span class="icon">📅</span>
+          קבע פגישת ייעוץ
+        </a>
+        <a href="tel:+972547866119" class="contact-button phone">
+          <span class="icon">📞</span>
+          054-786-6119
+        </a>
+        <a href="mailto:haim.bar@gmail.com" class="contact-button">
+          <span class="icon">✉️</span>
+          haim.bar@gmail.com
+        </a>
+      </div>
 
-    const data = await response.json();
-    removeTypingIndicator(typingIndicator);
-    
-    if (data.output) {
-      addMessageTo(chatMessagesSupport, data.output, true);
-    } else {
-      addMessageTo(chatMessagesSupport, 'מצטער, אירעה שגיאה. נסה שוב.', true);
-    }
-  } catch (error) {
-    console.error('Support Error:', error);
-    removeTypingIndicator(typingIndicator);
-    addMessageTo(chatMessagesSupport, 'מצטער, אירעה שגיאה בחיבור. נסה שוב.', true);
-  } finally {
-    sendButtonSupport.disabled = false;
-    chatInputSupport.focus();
-  }
-}
+      <div class="contact-form-wrapper">
+        <h3>או השאירו פרטים ונחזור אליכם</h3>
+        <iframe class="airtable-embed" src="https://airtable.com/embed/appTcnNnDIhihdxpA/pagW2ao1g8EOQsfvD/form" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+      </div>
+    </div>
+  </section>
 
-sendButtonSupport.addEventListener('click', sendMessageSupport);
 
-chatInputSupport.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter') {
-    sendMessageSupport();
-  }
-});
 
-/* Make first two sample cards open the relevant agent widget when clicked or activated via keyboard */
-document.querySelectorAll('.sample-card.clickable-agent').forEach(card => {
-  card.addEventListener('click', () => {
-    const agent = card.getAttribute('data-agent');
-    if (agent === 'support') {
-      // open support widget
-      chatWidgetSupport.classList.add('open');
-      chatBubbleSupport.style.display = 'none';
-      // focus input inside support widget
-      chatInputSupport.focus();
-    } else if (agent === 'sales') {
-      // open main sales/chat widget
-      chatWidget.classList.add('open');
-      chatBubble.style.display = 'none';
-      chatInput.focus();
-    }
-  });
 
-  card.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      card.click();
-    }
-  });
-});
+  <footer>
+    <div class="container footer-inner">
+      <p>&copy; 2026 CRM פשוט לעסקים קטנים | ניהול לקוחות חכם ונגיש</p>
+      <nav class="social-links" aria-label="קישורים חברתיים">
+        <a href="https://www.linkedin.com/company/smartesek" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg class="social-icon" width="18" height="18" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" aria-hidden="false">
+            <rect width="24" height="24" rx="3" fill="#0A66C2"></rect>
+            <path d="M6.94 9.5h2.5v8.5h-2.5v-8.5zm1.26-4.5a1.45 1.45 0 1 1 0 2.9 1.45 1.45 0 0 1 0-2.9zM11.6 9.5h2.4v1.16c.34-.62 1.2-1.36 2.62-1.36 2.8 0 3.32 1.84 3.32 4.23v4.47h-2.5v-3.96c0-.95-.02-2.17-1.32-2.17-1.32 0-1.52 1.03-1.52 2.09v4.04h-2.5v-8.34z" fill="#fff"/>
+          </svg>
+          <span style="margin-inline-start:8px;">LinkedIn</span>
+        </a>
+        <a href="https://www.facebook.com/smartesek" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg class="social-icon" width="18" height="18" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" aria-hidden="false">
+            <rect width="24" height="24" rx="3" fill="#1877F2"></rect>
+            <path d="M15.12 8.5h-1.52c-.3 0-.72.16-.72.8v1h2.24l-.28 2.19h-1.96V20h-2.36v-7.51H9.6v-2.19h1.24V9.48c0-1.83 1.08-3.03 2.73-3.03.79 0 1.64.14 1.83.15v2.9z" fill="#fff"/>
+          </svg>
+          <span style="margin-inline-start:8px;">Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/smartesek/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg class="social-icon" width="18" height="18" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" aria-hidden="false">
+            <defs>
+              <linearGradient id="ig-grad" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#f58529"/>
+                <stop offset="50%" stop-color="#dd2a7b"/>
+                <stop offset="100%" stop-color="#515bd4"/>
+              </linearGradient>
+            </defs>
+            <rect width="24" height="24" rx="5" fill="url(#ig-grad)"></rect>
+            <path d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3zm0 7.75a3.05 3.05 0 1 1 0-6.1 3.05 3.05 0 0 1 0 6.1z" fill="#fff"/>
+            <circle cx="17.5" cy="6.5" r="0.9" fill="#fff"/>
+          </svg>
+          <span style="margin-inline-start:8px;">Instagram</span>
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Chat Widget -->
+  <div id="chat-bubble" class="chat-bubble">
+    <div class="chat-bubble-tooltip">אני העוזר החכם שלך</div>
+    <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Robot head -->
+      <rect x="6" y="7" width="12" height="10" rx="2" fill="white"/>
+      <!-- Antenna -->
+      <circle cx="12" cy="4" r="1" fill="white"/>
+      <line x1="12" y1="5" x2="12" y2="7" stroke="white" stroke-width="1.5"/>
+      <!-- Eyes -->
+      <circle cx="9" cy="11" r="1.5" fill="#2c5aa0"/>
+      <circle cx="15" cy="11" r="1.5" fill="#2c5aa0"/>
+      <!-- Mouth -->
+      <rect x="9" y="14" width="6" height="1.5" rx="0.5" fill="#2c5aa0"/>
+    </svg>
+  </div>
+
+  <!-- Tesla Agent (center) -->
+  <div id="chat-bubble-tesla" class="chat-bubble tesla">
+    <div class="chat-bubble-tooltip">סוכן מכירות טסלה</div>
+    <!-- Tesla car / lightning icon -->
+    <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="3" y="6" width="18" height="10" rx="2" fill="white" opacity="0"/>
+      <path d="M12 2c1.2 0 3.6 0.8 5.2 1.8L16 4s-1-0.1-1.8 0.2C13 4.7 12 5 12 5s-1-0.3-2.2-0.8C8.9 3.9 7.9 4 7.9 4L6.8 3.8C8.4 2.8 10.8 2 12 2z" fill="#e82127"/>
+      <path d="M6 14l2-3h8l2 3" stroke="#e82127" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M7 14v3M17 14v3" stroke="#2c5aa0" stroke-width="1.2" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <div id="chat-widget" class="chat-widget">
+    <div class="chat-header">
+      <div class="chat-logo" style="font-weight: 400;">נציג מכירות</div>
+      <button id="close-chat" class="close-chat">✕</button>
+    </div>
+    <div id="chat-messages" class="chat-messages">
+      <div class="bot-message">
+        <div class="message-bubble bot">היי, כדי שנוכל לדבר בגובה העיניים, איך קוראים לך?</div>
+      </div>
+    </div>
+    <div class="chat-input-wrapper">
+      <input type="text" id="chat-input" class="chat-input" placeholder="הקלד הודעה..." dir="rtl">
+      <button id="send-message" class="send-button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Tesla Widget (center) -->
+  <div id="chat-widget-tesla" class="chat-widget tesla" aria-label="סוכן מכירות טסלה" data-url="">
+    <div class="chat-header">
+      <div class="chat-logo" style="font-weight: 400;">סוכן מכירות טסלה</div>
+      <button id="close-chat-tesla" class="close-chat">✕</button>
+    </div>
+    <div id="chat-messages-tesla" class="chat-messages">
+      <div class="bot-message">
+        <div class="message-bubble bot">תודה שבחרת טסלה - חסכון, ביצועים וטכנולוגיה<br>איך אני יכול לעזור?</div>
+      </div>
+    </div>
+    <div class="chat-input-wrapper">
+      <input type="text" id="chat-input-tesla" class="chat-input" placeholder="שאל/י על רכבים טסלה..." dir="rtl">
+      <button id="send-message-tesla" class="send-button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Support Agent Widget (duplicate, sticky bottom-left) -->
+  <div id="chat-bubble-support" class="chat-bubble support">
+    <div class="chat-bubble-tooltip">נציג תמיכת לקוחות</div>
+    <!-- headset/support icon (blue variant for support agent) -->
+    <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 3C7.03 3 3 7.03 3 12v3a3 3 0 0 0 3 3h.5a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H6a6 6 0 0 1 12 0h-1.5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1H18a3 3 0 0 0 3-3v-3c0-4.97-4.03-9-9-9z" fill="#ffffff"/>
+      <!-- eyes: green accent to differentiate from main robot -->
+      <circle cx="9" cy="11" r="1.5" fill="#28a745"/>
+      <circle cx="15" cy="11" r="1.5" fill="#28a745"/>
+      <!-- mouth -->
+      <rect x="9" y="14" width="6" height="1.5" rx="0.5" fill="#28a745"/>
+    </svg>
+  </div>
+
+  <div id="chat-widget-support" class="chat-widget support" aria-label="נציג תמיכה">
+    <div class="chat-header">
+      <div class="chat-logo" style="font-weight: 400;">נציג תמיכה</div>
+      <button id="close-chat-support" class="close-chat">✕</button>
+    </div>
+    <div id="chat-messages-support" class="chat-messages">
+      <div class="bot-message">
+        <div class="message-bubble bot">שלום אני נציג תמיכת לקוחות, היום אני תומך בלקוחות שהתקינו פאנלים סולארים</div>
+      </div>
+    </div>
+    <div class="chat-input-wrapper">
+      <input type="text" id="chat-input-support" class="chat-input" placeholder="שלח הודעה לנציג התמיכה..." dir="rtl">
+      <button id="send-message-support" class="send-button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
