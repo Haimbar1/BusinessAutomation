@@ -31,7 +31,7 @@
     <div class="container">
       <h2>דוגמאות לשימוש</h2>
       <div class="samples-grid">
-        <article class="sample-card" tabindex="0">
+        <article class="sample-card clickable-agent" tabindex="0" role="button" aria-pressed="false" data-agent="support">
           <div class="sample-icon" aria-hidden="true">
             <!-- headset icon -->
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,11 +42,20 @@
           <p>מענה חכם ומהיר 24/7 לכל שאלות הלקוחות שלכם.</p>
         </article>
 
-        <article class="sample-card" tabindex="0">
+        <article class="sample-card clickable-agent" tabindex="0" role="button" aria-pressed="false" data-agent="sales">
           <div class="sample-icon" aria-hidden="true">
-            <!-- sales agent icon -->
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-7 8a6 6 0 0 1 14 0H5z" fill="#fff"/>
+            <!-- robot head icon (same as chat bubble) -->
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Robot head -->
+              <rect x="6" y="7" width="12" height="10" rx="2" fill="#ffffff"/>
+              <!-- Antenna -->
+              <circle cx="12" cy="4" r="1" fill="#ffffff"/>
+              <line x1="12" y1="5" x2="12" y2="7" stroke="#ffffff" stroke-width="1.5"/>
+              <!-- Eyes -->
+              <circle cx="9" cy="11" r="1.5" fill="#2c5aa0"/>
+              <circle cx="15" cy="11" r="1.5" fill="#2c5aa0"/>
+              <!-- Mouth -->
+              <rect x="9" y="14" width="6" height="1.5" rx="0.5" fill="#2c5aa0"/>
             </svg>
           </div>
           <h3>סוכן מכירות אוטונומי</h3>
@@ -66,7 +75,11 @@
 
         <article class="sample-card" tabindex="0">
           <div class="sample-icon" aria-hidden="true">
-            <div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;">💬</div>
+            <!-- white speech bubble on green background -->
+            <svg width="56" height="56" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+              <rect width="24" height="24" rx="6" fill="#28a745"/>
+              <path d="M6 9.5c0-2.2 2.7-4 6-4s6 1.8 6 4-2.7 4-6 4c-.8 0-1.6-.1-2.3-.4L6 16l1.3-2.6C6.5 12.8 6 11.3 6 9.5z" fill="#ffffff"/>
+            </svg>
           </div>
           <h3>הגברת מעורבות לקוחות</h3>
           <p>יצירת קשר אישי ואוטומטי ששומר על המותג שלכם בראש התודעה.</p>
@@ -74,7 +87,7 @@
 
         <article class="sample-card" tabindex="0">
           <div class="sample-icon" aria-hidden="true">
-            <div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;">📣</div>
+            <div>📣</div>
           </div>
           <h3>ניהול רשתות חברתיות</h3>
           <p>פרסום תכנים אוטומטי בכל הפלטפורמות בו-זמנית ובמינימום מאמץ.</p>
@@ -82,7 +95,7 @@
 
         <article class="sample-card" tabindex="0">
           <div class="sample-icon" aria-hidden="true">
-            <div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;">✉️</div>
+            <div>✉️</div>
           </div>
           <h3>אוטומציית אימייל חכמה</h3>
           <p>שליחת ניוזלטרים ורצפי הודעות מותאמים אישית לכל שלב במסע הלקוח.</p>
@@ -90,7 +103,7 @@
 
         <article class="sample-card" tabindex="0">
           <div class="sample-icon" aria-hidden="true">
-            <div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;">📦</div>
+            <div>📦</div>
           </div>
           <h3>עדכוני מלאי בזמן אמת</h3>
           <p>עדכון אוטומטי ללקוחות על מוצרים שאזלו אצלהם במלאי והם צריכים לחדש מלאי.</p>
@@ -98,7 +111,7 @@
 
         <article class="sample-card" tabindex="0">
           <div class="sample-icon" aria-hidden="true">
-            <div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;">⚙️</div>
+            <div>⚙️</div>
           </div>
           <h3>אוטומציה בהתאמה אישית</h3>
           <p>כל תהליך עסקי שתרצו לייעל – אנחנו נהפוך אותו לאוטומטי.</p>
@@ -106,7 +119,7 @@
 
         <article class="sample-card" tabindex="0">
           <div class="sample-icon" aria-hidden="true">
-            <div style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:20px;">📊</div>
+            <div>📊</div>
           </div>
           <h3>שליטה על מכשירים מרחוק לפי הגיון</h3>
           <p>הפעלת קירור/חימום/אזעקה קולית וכו׳</p>
@@ -191,7 +204,7 @@
   <!-- Solution -->
   <section class="solution">
     <div class="container">
-      <h2>הפתרון? תהליכים ברורים + מערכות מחוברות + דשבורד אחד</h2>
+      <h2>הפתרון? תהליכים אוטומטיים + מערכות מחוברות + סוכני AI</h2>
       <div class="solution-points">
         <div class="point">
           <span class="checkmark">✓</span>
@@ -319,7 +332,7 @@
 
   <div id="chat-widget" class="chat-widget">
     <div class="chat-header">
-      <div class="chat-logo" style="font-weight: 400;">SMART ESEK</div>
+      <div class="chat-logo" style="font-weight: 400;">נציג מכירות</div>
       <button id="close-chat" class="close-chat">✕</button>
     </div>
     <div id="chat-messages" class="chat-messages">
@@ -330,6 +343,40 @@
     <div class="chat-input-wrapper">
       <input type="text" id="chat-input" class="chat-input" placeholder="הקלד הודעה..." dir="rtl">
       <button id="send-message" class="send-button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Support Agent Widget (duplicate, sticky bottom-left) -->
+  <div id="chat-bubble-support" class="chat-bubble support">
+    <div class="chat-bubble-tooltip">נציג תמיכת לקוחות</div>
+    <!-- headset/support icon (blue variant for support agent) -->
+    <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M12 3C7.03 3 3 7.03 3 12v3a3 3 0 0 0 3 3h.5a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H6a6 6 0 0 1 12 0h-1.5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1H18a3 3 0 0 0 3-3v-3c0-4.97-4.03-9-9-9z" fill="#ffffff"/>
+      <!-- eyes: green accent to differentiate from main robot -->
+      <circle cx="9" cy="11" r="1.5" fill="#28a745"/>
+      <circle cx="15" cy="11" r="1.5" fill="#28a745"/>
+      <!-- mouth -->
+      <rect x="9" y="14" width="6" height="1.5" rx="0.5" fill="#28a745"/>
+    </svg>
+  </div>
+
+  <div id="chat-widget-support" class="chat-widget support" aria-label="נציג תמיכה">
+    <div class="chat-header">
+      <div class="chat-logo" style="font-weight: 400;">נציג תמיכה</div>
+      <button id="close-chat-support" class="close-chat">✕</button>
+    </div>
+    <div id="chat-messages-support" class="chat-messages">
+      <div class="bot-message">
+        <div class="message-bubble bot">שלום אני נציג תמיכת לקוחות, היום אני תומך בלקוחות שהתקינו פאנלים סולארים</div>
+      </div>
+    </div>
+    <div class="chat-input-wrapper">
+      <input type="text" id="chat-input-support" class="chat-input" placeholder="שלח הודעה לנציג התמיכה..." dir="rtl">
+      <button id="send-message-support" class="send-button">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
         </svg>

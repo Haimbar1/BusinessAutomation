@@ -209,15 +209,42 @@ h3 {
   font-size: 36px;
 }
 
-/* give each sample a different accent via nth-child - expanded to 8 unique colorful accents */
+/* Waving hand for clickable sample cards (attention) */
+.sample-card.clickable-agent {
+  cursor: pointer;
+  position: relative;
+}
+
+.sample-card.clickable-agent:after {
+  content: "👋";
+  position: absolute;
+  top: -10px;
+  left: 14px; /* visually on left side for RTL layout near icon */
+  font-size: 22px;
+  transform-origin: 50% 70%;
+  animation: wave 1.6s infinite;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* slightly scale up icon on hover/focus for clarity */
+.sample-card.clickable-agent:focus .sample-icon,
+.sample-card.clickable-agent:hover .sample-icon {
+  transform: translateY(-4px) scale(1.03);
+  transition: transform 0.18s;
+}
+
+/* give each sample a different accent via nth-child - expanded to 9 unique colorful accents */
 .samples-grid .sample-card:nth-child(1) .sample-icon { background: linear-gradient(135deg,#5b8cff,#2c5aa0); } /* blue */
-.samples-grid .sample-card:nth-child(2) .sample-icon { background: linear-gradient(135deg,#ff8a65,#ff6b35); } /* orange */
+.samples-grid .sample-card:nth-child(2) .sample-icon { background: linear-gradient(135deg,#ff8a65,#ff6b35); } /* orange (match support agent) */
 .samples-grid .sample-card:nth-child(3) .sample-icon { background: linear-gradient(135deg,#ffd166,#ff9f1c); color:#111; } /* yellow */
-.samples-grid .sample-card:nth-child(4) .sample-icon { background: linear-gradient(135deg,#8be9a8,#28a745); } /* green */
+.samples-grid .sample-card:nth-child(4) .sample-icon { background: linear-gradient(135deg,#ff8a65,#ff6b35); } /* orange (chat/engagement) */
 .samples-grid .sample-card:nth-child(5) .sample-icon { background: linear-gradient(135deg,#ff6bcb,#dd2a7b); } /* pink/magenta */
 .samples-grid .sample-card:nth-child(6) .sample-icon { background: linear-gradient(135deg,#7ac7ff,#2b9cff); } /* light blue/cyan */
 .samples-grid .sample-card:nth-child(7) .sample-icon { background: linear-gradient(135deg,#a78bfa,#6b46c1); } /* purple */
-.samples-grid .sample-card:nth-child(8) .sample-icon { background: linear-gradient(135deg,#ffd6a5,#ffb494); color:#111; } /* warm peach */
+/* changed: make the "אוטומציה בהתאמה אישית" icon darker and more contrasting so it doesn't blend into the page background */
+.samples-grid .sample-card:nth-child(8) .sample-icon { background: linear-gradient(135deg,#2c5aa0,#1e7a34); color:#ffffff; box-shadow: 0 12px 32px rgba(30,60,110,0.14); } /* distinct blue/green */
 .samples-grid .sample-card:nth-child(9) .sample-icon { background: linear-gradient(135deg,#4cd3ff,#1bb0ff); } /* bright cyan */
 
 .sample-card h3 {
@@ -699,7 +726,7 @@ footer p {
   right: 22px;
   width: 72px;
   height: 72px;
-  background: linear-gradient(135deg, #2c5aa0 0%, #1e3a6b 100%);
+  background: linear-gradient(135deg,#ff8a65,#ff6b35); /* main chat bubble -> orange */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -710,9 +737,70 @@ footer p {
   z-index: 1000;
 }
 
+/* Support (left) variant for sticky support agent - distinct blue gradient so robots differ */
+.chat-bubble.support {
+  right: auto;
+  left: 22px;
+  background: linear-gradient(135deg,#5b8cff 0%, #2c5aa0 100%); /* blue gradient */
+}
+
+/* Support widget position/variant */
+.chat-widget.support {
+  right: auto;
+  left: 24px;
+  border-color: #2c5aa0; /* match blue support accent */
+}
+
+/* Override header for support widget to match blue accent (keeps main chat header orange) */
+.chat-widget.support .chat-header {
+  background: linear-gradient(135deg,#5b8cff,#2c5aa0);
+}
+
+/* Ensure tooltip arrow for left bubble points correctly */
+.chat-bubble.support .chat-bubble-tooltip {
+  right: auto;
+  left: 0;
+  bottom: 70px;
+}
+
+
 .chat-bubble:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+/* Waving hand indicator on chat bubbles (attention) */
+.chat-bubble::after,
+.chat-bubble.support::after {
+  content: "👋";
+  position: absolute;
+  bottom: 72px;
+  right: 18px;
+  font-size: 22px;
+  transform-origin: 50% 70%;
+  animation: wave 1.6s infinite;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.18));
+  z-index: 1100;
+  /* ensure visibility on left bubble */
+}
+
+.chat-bubble.support::after {
+  /* place on left bubble */
+  right: auto;
+  left: 18px;
+}
+
+/* subtle entrance move so it feels attention-grabbing but not annoying */
+@keyframes wave {
+  0% { transform: rotate(0deg) translateY(0); opacity: 0; }
+  8% { opacity: 1; }
+  12% { transform: rotate(14deg) translateY(-2px); }
+  24% { transform: rotate(-10deg) translateY(0); }
+  36% { transform: rotate(8deg) translateY(-1px); }
+  48% { transform: rotate(-6deg) translateY(0); }
+  60% { transform: rotate(4deg) translateY(-1px); }
+  72% { transform: rotate(-2deg) translateY(0); }
+  100% { transform: rotate(0deg) translateY(0); opacity: 1; }
 }
 
 .chat-bubble-tooltip {
@@ -759,7 +847,7 @@ footer p {
   display: none;
   flex-direction: column;
   z-index: 999;
-  border: 2px solid #1e3a6b;
+  border: 2px solid #e55a2b; /* match orange chat styling */
 }
 
 .chat-widget.open {
@@ -767,7 +855,7 @@ footer p {
 }
 
 .chat-header {
-  background: linear-gradient(135deg, #2c5aa0 0%, #1e3a6b 100%);
+  background: linear-gradient(135deg,#ff8a65,#ff6b35); /* main chat header -> orange */
   padding: 15px;
   border-radius: 10px 10px 0 0;
   display: flex;
@@ -849,6 +937,19 @@ footer p {
   background: #2c5aa0;
   color: white;
   border-bottom-right-radius: 4px;
+
+  /* stronger dark-blue frame to improve contrast and readability */
+  border: 4px solid #0A3B7A;
+  box-shadow: 0 14px 36px rgba(10,59,122,0.18), 0 3px 8px rgba(30,50,90,0.06);
+  padding: 12px 18px; /* slightly more inner space to balance thicker border */
+  position: relative;
+  z-index: 3; /* ensure bubble sits above any overlapping elements */
+}
+
+/* ensure typing indicator keeps same visual with outline */
+.bot-message.typing-message .typing-indicator {
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(44,90,160,0.12);
 }
 
 .message-bubble.user {
