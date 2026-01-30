@@ -737,6 +737,18 @@ footer p {
   z-index: 1000;
 }
 
+/* Tesla (center) variant placed between the two existing bubbles */
+.chat-bubble.tesla {
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;
+  bottom: 22px;
+  background: linear-gradient(135deg,#111111 0%, #e82127 100%); /* dark-to-tesla-red */
+  width: 76px;
+  height: 76px;
+  box-shadow: 0 10px 28px rgba(232,33,39,0.18);
+}
+
 /* Support (left) variant for sticky support agent - distinct blue gradient so robots differ */
 .chat-bubble.support {
   right: auto;
@@ -751,9 +763,16 @@ footer p {
   border-color: #2c5aa0; /* match blue support accent */
 }
 
-/* Override header for support widget to match blue accent (keeps main chat header orange) */
-.chat-widget.support .chat-header {
-  background: linear-gradient(135deg,#5b8cff,#2c5aa0);
+/* Tesla widget styling */
+.chat-widget.tesla {
+  right: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  border-color: #e82127;
+}
+
+.chat-widget.tesla .chat-header {
+  background: linear-gradient(135deg,#111111,#e82127);
 }
 
 /* Ensure tooltip arrow for left bubble points correctly */

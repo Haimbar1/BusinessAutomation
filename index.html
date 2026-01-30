@@ -330,6 +330,18 @@
     </svg>
   </div>
 
+  <!-- Tesla Agent (center) -->
+  <div id="chat-bubble-tesla" class="chat-bubble tesla">
+    <div class="chat-bubble-tooltip">סוכן מכירות טסלה</div>
+    <!-- Tesla car / lightning icon -->
+    <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="3" y="6" width="18" height="10" rx="2" fill="white" opacity="0"/>
+      <path d="M12 2c1.2 0 3.6 0.8 5.2 1.8L16 4s-1-0.1-1.8 0.2C13 4.7 12 5 12 5s-1-0.3-2.2-0.8C8.9 3.9 7.9 4 7.9 4L6.8 3.8C8.4 2.8 10.8 2 12 2z" fill="#e82127"/>
+      <path d="M6 14l2-3h8l2 3" stroke="#e82127" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M7 14v3M17 14v3" stroke="#2c5aa0" stroke-width="1.2" stroke-linecap="round"/>
+    </svg>
+  </div>
+
   <div id="chat-widget" class="chat-widget">
     <div class="chat-header">
       <div class="chat-logo" style="font-weight: 400;">נציג מכירות</div>
@@ -343,6 +355,27 @@
     <div class="chat-input-wrapper">
       <input type="text" id="chat-input" class="chat-input" placeholder="הקלד הודעה..." dir="rtl">
       <button id="send-message" class="send-button">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Tesla Widget (center) -->
+  <div id="chat-widget-tesla" class="chat-widget tesla" aria-label="סוכן מכירות טסלה" data-url="">
+    <div class="chat-header">
+      <div class="chat-logo" style="font-weight: 400;">סוכן מכירות טסלה</div>
+      <button id="close-chat-tesla" class="close-chat">✕</button>
+    </div>
+    <div id="chat-messages-tesla" class="chat-messages">
+      <div class="bot-message">
+        <div class="message-bubble bot">תודה שבחרת טסלה - חסכון, ביצועים וטכנולוגיה<br>איך אני יכול לעזור?</div>
+      </div>
+    </div>
+    <div class="chat-input-wrapper">
+      <input type="text" id="chat-input-tesla" class="chat-input" placeholder="שאל/י על רכבים טסלה..." dir="rtl">
+      <button id="send-message-tesla" class="send-button">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
           <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
         </svg>
