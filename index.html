@@ -1,88 +1,135 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
- <link rel="icon" type="image/png" href="favi.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>סדר ותהליכים לעסקים קטנים | קישור מערכות ודשבורדים מותאמים אישית</title>
+  
+  <!-- SEO Meta Tags -->
+  <title>אוטומציה עסקית וסוכני AI | ייעול תהליכים לעסקים - Smart Esek</title>
+  <meta name="description" content="הפכו את העסק ליעיל יותר עם אוטומציה עסקית, סוכני AI חכמים וחיבור מערכות CRM. ב-Smart Esek אנו חוסכים לכם זמן וכסף ומייצרים סדר ובהירות בעסק. פגישת ייעוץ חינם.">
+  <meta name="keywords" content="אוטומציה עסקית, סוכני AI, ייעול תהליכים, בוטים לעסקים, Make, אוטומציה לשיווק, ניהול עסק, Smart Esek">
+  <meta name="author" content="Smart Esek">
+  
+  <!-- Open Graph / Social Media Sharing -->
+  <meta property="og:title" content="אוטומציה עסקית וסוכני AI לעסקים | Smart Esek">
+  <meta property="og:description" content="מפסיקים לבזבז זמן על עבודה ידנית. מחברים את המערכות, מטמיעים סוכני AI ומתחילים לנהל את העסק חכם.">
+  <meta property="og:image" content="https://www.smartesek.com/Smart%20Esek%20logo.png">
+  <meta property="og:url" content="https://www.smartesek.com">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+
+  <!-- Canonical Tag (Prevents duplicate content) -->
+  <link rel="canonical" href="https://www.smartesek.com">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favi.png">
+  
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema Markup (JSON-LD) for Local Business/Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Smart Esek",
+    "image": "https://www.smartesek.com/Smart%20Esek%20logo.png",
+    "description": "מומחים באוטומציה עסקית, פיתוח סוכני AI וייעול תהליכים לעסקים קטנים ובינוניים.",
+    "priceRange": "₪1500-₪5000",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IL"
+    },
+    "telephone": "+972547866119",
+    "email": "haim.bar@gmail.com",
+    "url": "https://www.smartesek.com",
+    "sameAs": [
+      "https://www.facebook.com/smartesek",
+      "https://www.linkedin.com/company/smartesek",
+      "https://www.instagram.com/smartesek/"
+    ],
+    "offer": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "בניית אוטומציות וסוכני AI"
+      }
+    }
+  }
+  </script>
 </head>
 <body>
+
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <img src="https://www.smartesek.com/Smart%20Esek%20logo.png" alt="SMART ESEK" class="site-logo" />
+        <img src="https://www.smartesek.com/Smart%20Esek%20logo.png" alt="Smart Esek - לוגו סמארט עסק אוטומציות" class="site-logo" width="280" height="auto" />
         <div style="margin-bottom: 3rem;">
-          <video class="hero-video" autoplay muted loop playsinline>
+          <video class="hero-video" autoplay muted loop playsinline poster="poster-image.jpg">
+            <!-- Tip: Add a poster image above for faster loading perception -->
             <source src="BusinessAutomation.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+            דפדפן זה לא תומך בוידאו.
           </video>
         </div>
-        <h1>סדר ואוטומציה בעסק שלך</h1>
-       <p class="tagline">אוטומציה, חיבור ושליטה – כל העסק במקום אחד, חוסכים בעבודה ידנית ונהנים ממחיר חודשי נמוך וקבוע ללא הפתעות.</p>
-        <a href="#contact" class="cta-button">בואו נדבר</a>
+        <!-- Optimized H1 for SEO -->
+        <h1>אוטומציה עסקית וסוכני AI לניהול העסק</h1>
+        <p class="tagline">אוטומציה, חיבור מערכות CRM ושליטה מלאה – כל העסק במקום אחד. חוסכים בעבודה ידנית ונהנים ממחיר חודשי נמוך וקבוע.</p>
+        <a href="#contact" class="cta-button">בואו לייעל את העסק</a>
       </div>
     </div>
   </section>
 
-  <!-- AI Samples (replaces 'למי זה מתאים?') -->
-  <section class="ai-samples" aria-label="דוגמאות לשימוש" dir="rtl">
+  <!-- AI Samples -->
+  <section class="ai-samples" aria-label="פתרונות AI ואוטומציה" dir="rtl">
     <div class="container">
-      <h2>דוגמאות לשימוש</h2>
+      <h2>דוגמאות לפתרונות AI ואוטומציה</h2>
       <div class="samples-grid">
+        
         <article class="sample-card clickable-agent" tabindex="0" role="button" aria-pressed="false" data-agent="support">
           <div class="sample-icon" aria-hidden="true">
-            <!-- headset icon -->
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 3C7.03 3 3 7.03 3 12v3a3 3 0 0 0 3 3h.5a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H6a6 6 0 0 1 12 0h-1.5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1H18a3 3 0 0 0 3-3v-3c0-4.97-4.03-9-9-9z" fill="#fff"/>
             </svg>
           </div>
           <h3>נציג תמיכת לקוחות AI</h3>
-          <p>מענה חכם ומהיר 24/7 לכל שאלות הלקוחות שלכם.</p>
+          <p>מענה חכם ומהיר 24/7 לכל שאלות הלקוחות. בוט חכם שלא מתעייף.</p>
         </article>
 
         <article class="sample-card clickable-agent" tabindex="0" role="button" aria-pressed="false" data-agent="sales">
           <div class="sample-icon" aria-hidden="true">
-            <!-- robot head icon (same as chat bubble) -->
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <!-- Robot head -->
               <rect x="6" y="7" width="12" height="10" rx="2" fill="#ffffff"/>
-              <!-- Antenna -->
               <circle cx="12" cy="4" r="1" fill="#ffffff"/>
               <line x1="12" y1="5" x2="12" y2="7" stroke="#ffffff" stroke-width="1.5"/>
-              <!-- Eyes -->
               <circle cx="9" cy="11" r="1.5" fill="#2c5aa0"/>
               <circle cx="15" cy="11" r="1.5" fill="#2c5aa0"/>
-              <!-- Mouth -->
               <rect x="9" y="14" width="6" height="1.5" rx="0.5" fill="#2c5aa0"/>
             </svg>
           </div>
           <h3>סוכן מכירות אוטונומי</h3>
-          <p>ניהול לידים וסגירת עסקאות מסביב לשעון בלי לפספס אף פנייה.</p>
+          <p>ניהול לידים וסגירת עסקאות מסביב לשעון. בינה מלאכותית שמגדילה מכירות.</p>
         </article>
 
         <article class="sample-card" tabindex="0">
           <div class="sample-icon" aria-hidden="true">
-            <!-- receipt icon -->
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M7 2h10v20l-3-2-3 2-3-2-1 1V2z" fill="#fff"/>
             </svg>
           </div>
-          <h3>דיווח הוצאות אוטומטי</h3>
-          <p>סריקה, שמירה ודיווח הוצאות בלחיצת כפתור – בלי ניירת מיותרת.</p>
+          <h3>דיווח הוצאות וחשבוניות</h3>
+          <p>אוטומציה לפיננסים: סריקה, שמירה ודיווח הוצאות אוטומטי ללא ניירת.</p>
         </article>
 
         <article class="sample-card" tabindex="0">
           <div class="sample-icon" aria-hidden="true">
-            <!-- white speech bubble on green background -->
             <svg width="56" height="56" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
               <rect width="24" height="24" rx="6" fill="#28a745"/>
               <path d="M6 9.5c0-2.2 2.7-4 6-4s6 1.8 6 4-2.7 4-6 4c-.8 0-1.6-.1-2.3-.4L6 16l1.3-2.6C6.5 12.8 6 11.3 6 9.5z" fill="#ffffff"/>
             </svg>
           </div>
-          <h3>הגברת מעורבות לקוחות</h3>
-          <p>יצירת קשר אישי ואוטומטי ששומר על המותג שלכם בראש התודעה.</p>
+          <h3>שימור לקוחות בוואטסאפ</h3>
+          <p>יצירת קשר אישי ואוטומטי בוואטסאפ לשמירה על המותג בראש התודעה.</p>
         </article>
 
         <article class="sample-card" tabindex="0">
@@ -90,39 +137,39 @@
             <div>📣</div>
           </div>
           <h3>ניהול רשתות חברתיות</h3>
-          <p>פרסום תכנים אוטומטי בכל הפלטפורמות בו-זמנית ובמינימום מאמץ.</p>
+          <p>פרסום פוסטים אוטומטי בכל הפלטפורמות. שיווק יעיל במינימום מאמץ.</p>
         </article>
 
         <article class="sample-card" tabindex="0">
           <div class="sample-icon" aria-hidden="true">
             <div>✉️</div>
           </div>
-          <h3>אוטומציית אימייל חכמה</h3>
-          <p>שליחת ניוזלטרים ורצפי הודעות מותאמים אישית לכל שלב במסע הלקוח.</p>
+          <h3>שיווק במייל (Email Marketing)</h3>
+          <p>ניוזלטרים ורצפי הודעות חכמים המותאמים אישית למסע הלקוח.</p>
         </article>
 
         <article class="sample-card" tabindex="0">
           <div class="sample-icon" aria-hidden="true">
             <div>📦</div>
           </div>
-          <h3>עדכוני מלאי בזמן אמת</h3>
-          <p>עדכון אוטומטי ללקוחות על מוצרים שאזלו אצלהם במלאי והם צריכים לחדש מלאי.</p>
+          <h3>ניהול מלאי אוטומטי</h3>
+          <p>התראות מלאי בזמן אמת ועדכון לקוחות אוטומטי על מוצרים שחזרו.</p>
         </article>
 
         <article class="sample-card" tabindex="0">
           <div class="sample-icon" aria-hidden="true">
             <div>⚙️</div>
           </div>
-          <h3>אוטומציה בהתאמה אישית</h3>
-          <p>כל תהליך עסקי שתרצו לייעל – אנחנו נהפוך אותו לאוטומטי.</p>
+          <h3>פיתוח אוטומציות בהתאמה אישית</h3>
+          <p>כל תהליך ידני שתרצו לייעל – אנחנו נבנה עבורו אוטומציה ב-Make.</p>
         </article>
 
         <article class="sample-card" tabindex="0">
           <div class="sample-icon" aria-hidden="true">
             <div>📊</div>
           </div>
-          <h3>שליטה על מכשירים מרחוק לפי הגיון</h3>
-          <p>הפעלת קירור/חימום/אזעקה קולית וכו׳</p>
+          <h3>שליטה מרחוק ו-IoT</h3>
+          <p>הפעלת מערכות (מיזוג, אזעקה) לפי לוגיקה חכמה וחיבור למערכות העסק.</p>
         </article>
 
       </div>
@@ -132,27 +179,27 @@
   <!-- Process -->
   <section class="process">
     <div class="container">
-      <h2>איך זה עובד?</h2>
+      <h2>איך עובד תהליך האוטומציה?</h2>
       <div class="timeline">
         <div class="step">
           <div class="step-number">1</div>
-          <h3>מיפוי תהליכים</h3>
-          <p>הבנת התהליכים הקיימים, איפה המידע, מה חסר</p>
+          <h3>מיפוי צרכים ותהליכים</h3>
+          <p>אפיון מעמיק של העסק: איפה המידע נמצא ואיפה מבזבזים זמן.</p>
         </div>
         <div class="step">
           <div class="step-number">2</div>
-          <h3>חיבור מערכות</h3>
-          <p>קישור בין כלי העבודה שלך + בניית דשבורד מרכזי</p>
+          <h3>חיבור מערכות (אינטגרציה)</h3>
+          <p>חיבור ה-CRM, האתר והטלפון למקום אחד ובניית דשבורד מרכזי.</p>
         </div>
         <div class="step">
           <div class="step-number">3</div>
-          <h3>הגדרת תהליכים</h3>
-          <p>תהליכים ברורים לצוות, אוטומציות, מדריכי עבודה</p>
+          <h3>בניית אוטומציות</h3>
+          <p>הגדרת בוטים, תהליכי עבודה אוטומטיים והדרכות לצוות.</p>
         </div>
         <div class="step">
           <div class="step-number">4</div>
-          <h3>ליווי והטמעה</h3>
-          <p>הכשרת הצוות, חודש ליווי, תמיכה שוטפת</p>
+          <h3>ליווי, הטמעה ותמיכה</h3>
+          <p>אנחנו איתכם עד שהכל עובד חלק, כולל תמיכה שוטפת.</p>
         </div>
       </div>
     </div>
@@ -161,74 +208,72 @@
   <!-- Pricing -->
   <section class="pricing">
     <div class="container">
-      <h2>תמחור שקוף</h2>
+      <h2>חבילות אוטומציה לעסקים</h2>
       <div class="pricing-cards">
         <div class="pricing-card">
-          <h3>חבילה בסיסית</h3>
+          <h3>חבילת בסיס</h3>
           <div class="price">החל מ-₪1,500</div>
           <ul>
-            <li>מיפוי תהליכים</li>
-            <li>הגדרת תהליכים פנימיים</li>
-            <li>דשבורד בסיסי</li>
-            <li>הדרכה + מדריך</li>
+            <li>מיפוי תהליכים ראשוני</li>
+            <li>הגדרת נהלי עבודה</li>
+            <li>דשבורד ניהולי בסיסי</li>
+            <li>הדרכה והטמעה</li>
           </ul>
         </div>
         <div class="pricing-card featured">
-          <div class="badge">מומלץ</div>
-          <h3>חבילה מלאה</h3>
+          <div class="badge">הכי משתלם</div>
+          <h3>חבילת אוטומציה מלאה</h3>
           <div class="price">החל מ-₪2,200</div>
           <ul>
-            <li>מיפוי מעמיק</li>
-            <li>חיבור כל המערכות</li>
+            <li>מיפוי עסקי מעמיק</li>
+            <li>חיבור כל המערכות (אינטגרציות)</li>
             <li>דשבורד מותאם אישית</li>
-            <li>אוטומציות מתקדמות</li>
-            <li>חודש ליווי + 10 שעות</li>
+            <li>אוטומציות מורכבות ב-Make</li>
+            <li>חודש ליווי + 10 שעות פיתוח</li>
           </ul>
         </div>
         <div class="pricing-card">
-          <h3>ליווי שוטף</h3>
+          <h3>ליווי ותחזוקה (Retainer)</h3>
           <div class="price">₪400/חודש</div>
           <ul>
-            <li>איחסון</li>
-            <li>תמיכה בתקלות</li>
-            <li>עדכונים שוטפים</li>
+            <li>אחסון ושרתים</li>
+            <li>תמיכה טכנית בתקלות</li>
+            <li>שיפורים ועדכונים שוטפים</li>
           </ul>
         </div>
       </div>
-      <p class="pricing-note">💡 תשלום חד-פעמי על ההקמה + עלות חודשית מינימלית לתפעול המערכות</p>
+      <p class="pricing-note">💡 תשלום חד-פעמי על הקמת האוטומציה + עלות תפעול חודשית מינימלית.</p>
     </div>
   </section>
-
-
 
   <!-- Solution -->
   <section class="solution">
     <div class="container">
-      <h2>הפתרון? תהליכים אוטומטיים + מערכות מחוברות + סוכני AI</h2>
+      <h2>הפתרון: אוטומציה, חיבור מערכות וסוכני AI</h2>
       <div class="solution-points">
         <div class="point">
           <span class="checkmark">✓</span>
-          <p><strong>חיבור מערכות:</strong> כל הכלים שלך מדברים ביניהם, המידע זורם אוטומטית</p>
+          <p><strong>חיבור מערכות (Integration):</strong> כל הכלים (CRM, Gmail, WhatsApp) מדברים ביניהם.</p>
         </div>
         <div class="point">
           <span class="checkmark">✓</span>
-          <p><strong>תהליכים ברורים:</strong> כל אחד יודע מה לעשות ואיך, עם הנחיות ברורות</p>
+          <p><strong>סדר וארגון:</strong> נהלי עבודה ברורים, כל עובד יודע בדיוק מה לעשות.</p>
         </div>
         <div class="point">
           <span class="checkmark">✓</span>
-          <p><strong>אוטומציות חכמות:</strong> המרות, שימור וגידול - כל פעולה קורית אוטומטית לפי חוקיות מוגדרות, כמעט ללא מגע יד אדם</p>
+          <p><strong>אוטומציות חכמות:</strong> המרות לידים, שימור לקוחות ותפעול שוטף ללא מגע יד אדם.</p>
         </div>
         <div class="point">
           <span class="checkmark">✓</span>
-          <p><strong>דשבורד מרכזי:</strong> תמונה מלאה של העסק במקום אחד, החלטות מבוססות נתונים</p>
+          <p><strong>דשבורד מרכזי:</strong> כל הנתונים של העסק במסך אחד לקבלת החלטות חכמה.</p>
         </div>
         <div class="point">
           <span class="checkmark">✓</span>
-          <p><strong>עלות חודשית מינימלית:</strong> תשלום חד-פעמי על ההקמה, בלי מנויים יקרים - רק עלויות תפעול מינימליות</p>
+          <p><strong>חיסכון בעלויות:</strong> תשלום הקמה חד פעמי ללא דמי מנוי מנופחים.</p>
         </div>
         <div class="point">
           <span class="checkmark">✓</span>
-          <p><strong>ליווי צמוד:</strong> לא משאירים אותך לבד, תמיכה עד הטמעה מלאה</p>
+          <p><strong>שקט נפשי:</strong> ליווי צמוד ותמיכה טכנית מלאה לאורך כל הדרך.</p>
         </div>
       </div>
     </div>
@@ -237,7 +282,7 @@
   <!-- Presentation Section -->
   <section style="background: #f8f8f8; padding: 60px 0; text-align: center;">
     <div class="container">
-      <iframe src="https://gamma.app/embed/0ogcn3q77qyxtz9" style="width: 100%; max-width: 100%; height: 450px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" allow="fullscreen" title="Untitled"></iframe>
+      <iframe src="https://gamma.app/embed/0ogcn3q77qyxtz9" style="width: 100%; max-width: 100%; height: 450px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" allow="fullscreen" title="מצגת הסבר על אוטומציה עסקית"></iframe>
     </div>
   </section>
   
@@ -245,16 +290,16 @@
   <section class="contact" id="contact">
     <div class="container">
       <h2>בואו נסדר את העסק שלכם</h2>
-      <p class="contact-text">פגישת ייעוץ ראשונית חינם - נבין את הצרכים ונראה איך אפשר לעזור</p>
+      <p class="contact-text">רוצים לחסוך זמן וכסף? פגישת ייעוץ ראשונית חינם לבדיקת התאמה.</p>
       
       <div class="contact-methods">
         <a href="https://wa.me/972547866119?text=היי, אשמח לשמוע עוד על הסדרת תהליכים ודשבורד לעסק שלי" target="_blank" class="contact-button whatsapp">
           <span class="icon">💬</span>
-          שלח הודעה בוואטסאפ
+          וואטסאפ
         </a>
         <a href="https://cal.com/haimbar" target="_blank" class="contact-button calendar">
           <span class="icon">📅</span>
-          קבע פגישת ייעוץ
+          תיאום פגישה
         </a>
         <a href="tel:+972547866119" class="contact-button phone">
           <span class="icon">📞</span>
@@ -262,23 +307,20 @@
         </a>
         <a href="mailto:haim.bar@gmail.com" class="contact-button">
           <span class="icon">✉️</span>
-          haim.bar@gmail.com
+          שלח מייל
         </a>
       </div>
 
       <div class="contact-form-wrapper">
-        <h3>או השאירו פרטים ונחזור אליכם</h3>
-        <iframe class="airtable-embed" src="https://airtable.com/embed/appTcnNnDIhihdxpA/pagW2ao1g8EOQsfvD/form" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+        <h3>או השאירו פרטים ונחזור אליכם בהקדם</h3>
+        <iframe class="airtable-embed" src="https://airtable.com/embed/appTcnNnDIhihdxpA/pagW2ao1g8EOQsfvD/form" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc; border-radius: 8px;"></iframe>
       </div>
     </div>
   </section>
 
-
-
-
   <footer>
     <div class="container footer-inner">
-      <p>&copy; 2026 CRM פשוט לעסקים קטנים | ניהול לקוחות חכם ונגיש</p>
+      <p>&copy; 2026 Smart Esek | פתרונות אוטומציה, CRM ו-AI לעסקים קטנים.</p>
       <nav class="social-links" aria-label="קישורים חברתיים">
         <a href="https://www.linkedin.com/company/smartesek" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <svg class="social-icon" width="18" height="18" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" aria-hidden="false">
@@ -313,27 +355,24 @@
     </div>
   </footer>
 
-  <!-- Chat Widget -->
+  <!-- Chat Widgets HTML (No changes needed here for SEO, kept strictly functional) -->
+  
+  <!-- Main Sales Agent -->
   <div id="chat-bubble" class="chat-bubble">
     <div class="chat-bubble-tooltip">אני העוזר החכם שלך</div>
     <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Robot head -->
       <rect x="6" y="7" width="12" height="10" rx="2" fill="white"/>
-      <!-- Antenna -->
       <circle cx="12" cy="4" r="1" fill="white"/>
       <line x1="12" y1="5" x2="12" y2="7" stroke="white" stroke-width="1.5"/>
-      <!-- Eyes -->
       <circle cx="9" cy="11" r="1.5" fill="#2c5aa0"/>
       <circle cx="15" cy="11" r="1.5" fill="#2c5aa0"/>
-      <!-- Mouth -->
       <rect x="9" y="14" width="6" height="1.5" rx="0.5" fill="#2c5aa0"/>
     </svg>
   </div>
 
-  <!-- Tesla Agent (center) -->
+  <!-- Tesla Agent -->
   <div id="chat-bubble-tesla" class="chat-bubble tesla">
     <div class="chat-bubble-tooltip">סוכן מכירות טסלה</div>
-    <!-- Tesla car / lightning icon -->
     <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <rect x="3" y="6" width="18" height="10" rx="2" fill="white" opacity="0"/>
       <path d="M12 2c1.2 0 3.6 0.8 5.2 1.8L16 4s-1-0.1-1.8 0.2C13 4.7 12 5 12 5s-1-0.3-2.2-0.8C8.9 3.9 7.9 4 7.9 4L6.8 3.8C8.4 2.8 10.8 2 12 2z" fill="#e82127"/>
@@ -362,7 +401,6 @@
     </div>
   </div>
 
-  <!-- Tesla Widget (center) -->
   <div id="chat-widget-tesla" class="chat-widget tesla" aria-label="סוכן מכירות טסלה" data-url="">
     <div class="chat-header">
       <div class="chat-logo" style="font-weight: 400;">סוכן מכירות טסלה</div>
@@ -383,16 +421,13 @@
     </div>
   </div>
 
-  <!-- Support Agent Widget (duplicate, sticky bottom-left) -->
+  <!-- Support Agent Widget -->
   <div id="chat-bubble-support" class="chat-bubble support">
     <div class="chat-bubble-tooltip">נציג תמיכת לקוחות</div>
-    <!-- headset/support icon (blue variant for support agent) -->
     <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M12 3C7.03 3 3 7.03 3 12v3a3 3 0 0 0 3 3h.5a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H6a6 6 0 0 1 12 0h-1.5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1H18a3 3 0 0 0 3-3v-3c0-4.97-4.03-9-9-9z" fill="#ffffff"/>
-      <!-- eyes: green accent to differentiate from main robot -->
       <circle cx="9" cy="11" r="1.5" fill="#28a745"/>
       <circle cx="15" cy="11" r="1.5" fill="#28a745"/>
-      <!-- mouth -->
       <rect x="9" y="14" width="6" height="1.5" rx="0.5" fill="#28a745"/>
     </svg>
   </div>
