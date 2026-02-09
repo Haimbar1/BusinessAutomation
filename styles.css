@@ -75,13 +75,16 @@ h3 {
   box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
-/* Site logo in hero */
+/* Site logo in hero - stretch full width like the hero video */
 .site-logo {
   display: block;
-  margin: 0 auto 20px;
-  max-width: 280px;
+  margin: 0 auto 20px; /* centered horizontally */
+  width: 100%;
+  max-width: 420px; /* limit logo width so it doesn't match the large hero video */
   height: auto;
+  object-fit: contain;
   filter: drop-shadow(0 8px 20px rgba(0,0,0,0.10));
+  border-radius: 10px; /* keep gentle rounding to match hero card */
 }
 
 .hero-video {
@@ -219,7 +222,8 @@ h3 {
   content: "👋";
   position: absolute;
   top: -10px;
-  left: 14px; /* visually on left side for RTL layout near icon */
+  left: 50%; /* centered horizontally above the card */
+  transform: translateX(-50%);
   font-size: 22px;
   transform-origin: 50% 70%;
   animation: wave 1.6s infinite;
@@ -788,25 +792,12 @@ footer p {
   box-shadow: 0 6px 16px rgba(0,0,0,0.4);
 }
 
-/* Waving hand indicator on chat bubbles (attention) */
+/* Waving hand indicator on chat bubbles (attention)
+   Disabled for chat-bubbles to remove the hand from bottom agents.
+   Sample-card waving hand remains untouched. */
 .chat-bubble::after,
 .chat-bubble.support::after {
-  content: "👋";
-  position: absolute;
-  bottom: 72px;
-  right: 18px;
-  font-size: 22px;
-  transform-origin: 50% 70%;
-  animation: wave 1.6s infinite;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.18));
-  z-index: 1100;
-  /* ensure visibility on left bubble */
-}
-
-.chat-bubble.support::after {
-  /* place on left bubble */
-  right: auto;
-  left: 18px;
+  display: none;
 }
 
 /* subtle entrance move so it feels attention-grabbing but not annoying */
@@ -839,8 +830,10 @@ footer p {
   transform: translateY(0);
   direction: rtl;
   border: 1px solid #e0e0e0;
+  display: block; /* visible by default (desktop) */
 }
 
+/* Tooltip arrow */
 .chat-bubble-tooltip::after {
   content: '';
   position: absolute;
@@ -852,6 +845,17 @@ footer p {
   transform: rotate(45deg);
   border-right: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
+}
+
+/* Show tooltips only on small screens (mobile) */
+@media (max-width: 768px) {
+  .chat-bubble-tooltip {
+    display: none; /* hide tooltips on mobile */
+    bottom: 80px; /* slight offset for mobile layout */
+    right: 0;
+    font-size: 13px;
+    padding: 8px 12px;
+  }
 }
 
 .chat-widget {
@@ -1184,5 +1188,10 @@ footer p {
   
   .contact-form-wrapper h3 {
     font-size: 1.1rem;
+  }
+
+  /* Remove waving hand from clickable sample cards on mobile only */
+  .sample-card.clickable-agent::after {
+    display: none;
   }
 }
