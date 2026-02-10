@@ -319,6 +319,9 @@ document.querySelectorAll('.sample-card.clickable-agent').forEach(card => {
         const inputEl = document.getElementById('chat-input-tesla');
         if (inputEl) inputEl.focus();
       }
+    } else if (agent === 'marketing') {
+      // navigate to the AI Marketing demo page
+      window.location.href = 'ai_marketing.html';
     }
   });
 
