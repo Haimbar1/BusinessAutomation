@@ -75,16 +75,79 @@ h3 {
   box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
-/* Site logo in hero - stretch full width like the hero video */
+/* Site logo in hero - match the hero video height while preserving aspect ratio */
 .site-logo {
   display: block;
-  margin: 0 auto 20px; /* centered horizontally */
-  width: 100%;
-  max-width: 420px; /* limit logo width so it doesn't match the large hero video */
+  margin: 0 auto;
+  width: auto;                 /* let width adapt to preserve aspect */
   height: auto;
+  max-height: 350px;           /* match .hero-video max-height on desktop */
   object-fit: contain;
   filter: drop-shadow(0 8px 20px rgba(0,0,0,0.10));
   border-radius: 10px; /* keep gentle rounding to match hero card */
+  max-width: 100%; /* prevent overflow in narrow containers */
+}
+
+/* ensure logo height reduces on smaller screens to match video breakpoint */
+@media (max-width: 768px) {
+  .site-logo {
+    max-height: 260px; /* match mobile .hero-video max-height */
+    width: auto;
+  }
+}
+
+/* Hero media layout: logo 30% / video 70% side-by-side */
+.hero-media {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 2rem;
+}
+
+.logo-wrapper {
+  flex: 0 0 30%;
+  max-width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.video-wrapper {
+  flex: 0 0 70%;
+  max-width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ensure video fills its wrapper nicely */
+.video-wrapper .hero-video {
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 14px 50px rgba(0,0,0,0.12);
+  border: 2px solid #e0e0e0;
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 768px) {
+  .hero-media {
+    flex-direction: column;
+    gap: 14px;
+  }
+  .logo-wrapper, .video-wrapper {
+    max-width: 100%;
+    flex: 0 0 auto;
+  }
+  .video-wrapper .hero-video {
+    max-height: 260px;
+  }
 }
 
 .hero-video {
