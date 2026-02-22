@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>מכונת שיווק AI — יצירת פוסט ברשתות חברתיות</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Page-specific overrides for the AI Marketing page */
+    body { background: #f4f6f8; font-family: 'Noto Sans Hebrew', sans-serif; }
+    .ai-marketing {
+      max-width: 1200px; margin: 30px auto; padding: 18px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .ai-marketing { grid-template-columns: 1fr; padding: 12px; }
+    }
+    .panel { background: #fff; border-radius: 12px; padding: 18px; box-shadow: 0 8px 24px rgba(16,32,64,0.06); }
+    .panel h1 { font-size: 1.6rem; margin-bottom: 8px; font-weight:600; }
+    .left-panel { min-height: 520px; display:flex; flex-direction:column; gap:12px; }
+    .right-panel { min-height: 520px; display:flex; flex-direction:column; gap:12px; }
+    .embed-frame { width:100%; height:520px; border:1px solid #e6e9ee; border-radius:10px; }
+    .webhook-box { background:#f8fafc; border:1px dashed #cfd8e3; padding:12px; border-radius:8px; font-size:0.95rem; color:#1b2b46;}
+    .instructions { color:#4b5563; font-size:0.95rem; margin-top:6px; }
+    .preview-area { background:#ffffff; border-radius:10px; padding:12px; min-height:300px; border:1px solid #eef2f6; overflow:auto; }
+    .controls { display:flex; gap:10px; align-items:center; margin-top:6px; flex-wrap:wrap; }
+    .btn { background:#2c5aa0; color:white; padding:10px 14px; border-radius:8px; border:none; cursor:pointer; font-weight:600; }
+    .btn.secondary { background:#28a745; }
+    .small { font-size:0.95rem; padding:8px 10px; }
+    .log { font-family: monospace; font-size:0.9rem; color:#233444; background:#f1f5f9; padding:8px; border-radius:8px; max-height:140px; overflow:auto; }
+    label { display:block; margin-bottom:6px; font-weight:600; color:#0f1724; }
+    .field { display:flex; gap:8px; align-items:center; }
+    .token { word-break:break-all; font-weight:700; color:#0b1220; }
+    .note { color:#475569; font-size:0.92rem; margin-top:6px; }
+  </style>
+</head>
+<body>
+  <div class="container ai-marketing">
+    <div class="panel left-panel" role="region" aria-label="טופס יצירת פוסט">
+      <h1>טופס יצירת פוסט (נשלח ל-n8n)</h1>
+      <div class="instructions">הטופס שנפתח בשמאל הוא ה-form של n8n; מלאו ושלחו שם — בדוגמה זו הדף מציג כיצד החזרת HTML תוצג בצד ימין דרך webhook.</div>
+      <iframe class="embed-frame" src="https://n8n.srv1239769.hstgr.cloud/form-test/59656171-654e-4216-9141-1c5a4f29d4d2" title="n8n form embed"></iframe>
+
+      <div style="margin-top:12px;">
+        <label>כתובת webhook ייחודית לקבלת HTML של הפוסט (העתק והדבק ב-flow של n8n כ-HTTP Request / Webhook target):</label>
+        <div class="webhook-box" id="webhookBox">יוצר כתובת...</div>
+        <div class="instructions">שליחת POST JSON לכתובת זו עם שדה html (או עם raw HTML בשצף הבקשה) תציג את הפוסט כאן.</div>
+        <div class="controls" style="margin-top:10px;">
+          <button class="btn small" id="regenBtn">צור token חדש</button>
+          <button class="btn secondary small" id="clearPreview">נקה תצוגה</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel right-panel" role="region" aria-label="תצוגת פוסט שנוצר">
+      <h1>תצוגת פוסט שנוצר</h1>
+      <div class="note">כאן יוצג ה-HTML שה-webhook מקבל (לדוגמה: תוצאת יצירת פוסט ברשתות חברתיות).</div>
+
+      <div style="margin-top:10px;">
+        <label>קישור ישיר לדמות ה-webhook לשימוש בבדיקה (POST דמה ב-JS):</label>
+        <div class="log" id="testCurl">ממתין...</div>
+      </div>
+
+      <div style="margin-top:12px;">
+        <label>Preview</label>
+        <div class="preview-area" id="previewArea">
+          <div style="color:#64748b">עדיין לא התקבל HTML — שלחו POST לכתובת ה-webhook המוצגת משמאל כדי לראות את הפוסט כאן.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;">
+        <label>פעולות בדיקה</label>
+        <div class="controls">
+          <button class="btn small" id="simulateSend">שלח POST דמה ל-webhook</button>
+          <button class="btn small" id="showLastRequest">הצג לוג אחרון</button>
+        </div>
+        <div style="margin-top:8px;">
+          <div class="log" id="requestLog">אין בקשות עדיין.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="ai_marketing.js"></script>
+</body>
+</html>

@@ -790,7 +790,9 @@ footer p {
 .chat-bubble {
   position: fixed;
   bottom: 22px;
-  right: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;
   width: 72px;
   height: 72px;
   background: linear-gradient(135deg,#ff8a65,#ff6b35); /* main chat bubble -> orange */
@@ -878,22 +880,24 @@ footer p {
 
 .chat-bubble-tooltip {
   position: absolute;
-  bottom: 70px;
+  bottom: 84px;
   right: 0;
-  background: white;
-  color: #1a1a1a;
-  padding: 10px 15px;
-  border-radius: 8px;
-  font-size: 14px;
+  background: #2c5aa0; /* site blue */
+  color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 1.2;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 14px 40px rgba(12,34,80,0.35);
   opacity: 1;
   pointer-events: auto;
-  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity 0.18s ease, transform 0.18s ease;
   transform: translateY(0);
   direction: rtl;
-  border: 1px solid #e0e0e0;
+  border: 1px solid rgba(255,255,255,0.06);
   display: block; /* visible by default (desktop) */
+  z-index: 1100; /* ensure it sits above other elements */
 }
 
 /* Tooltip arrow */
@@ -904,10 +908,10 @@ footer p {
   right: 20px;
   width: 12px;
   height: 12px;
-  background: white;
+  background: #2c5aa0; /* match tooltip */
   transform: rotate(45deg);
-  border-right: 1px solid #e0e0e0;
-  border-bottom: 1px solid #e0e0e0;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
 /* Show tooltips only on small screens (mobile) */
@@ -924,7 +928,9 @@ footer p {
 .chat-widget {
   position: fixed;
   bottom: 86px; /* moved slightly up so it doesn't collide with OS UI */
-  right: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;
   width: 460px;
   height: 520px; /* reduced height to show more content above input and avoid full-focus overlap */
   background: white;
@@ -962,6 +968,16 @@ footer p {
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 1px;
+  pointer-events: none; /* allow interactive elements inside header to receive clicks */
+}
+
+/* Ensure any interactive link/button placed inside .chat-header sits above the centered logo */
+.chat-header a,
+.chat-header button,
+.chat-header [role="button"] {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
 }
 
 .close-chat {
